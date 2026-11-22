@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Recorder User Guide</title>
+<style>
+  :root { --accent: #0b5cad; --muted: #5a6270; --border: #d6dbe3; --note: #eef5fc; --warn: #fff6e5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.6 "Segoe UI", Arial, sans-serif; color: #1d2330; background: #f6f8fb; }
+  header { background: var(--accent); color: #fff; padding: 28px 40px; }
+  header h1 { margin: 0; font-size: 30px; }
+  header p { margin: 4px 0 0; opacity: .9; }
+  .layout { display: flex; max-width: 1200px; margin: 0 auto; }
+  nav { position: sticky; top: 0; align-self: flex-start; width: 250px; padding: 24px 16px 24px 24px; }
+  nav h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 8px; }
+  nav ol { padding-left: 20px; margin: 0; }
+  nav li { margin: 4px 0; }
+  nav a { color: var(--accent); text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+  main { flex: 1; min-width: 0; padding: 24px 40px 60px 16px; }
+  section { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 8px 28px 20px; margin-bottom: 24px; }
+  h2 { color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  h3 { margin-bottom: 4px; }
+  figure { margin: 16px 0; text-align: center; }
+  figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  figcaption { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: #eef1f6; }
+  .note, .warn { border-left: 4px solid var(--accent); background: var(--note); padding: 10px 14px; margin: 14px 0; border-radius: 4px; }
+  .warn { border-color: #d98a00; background: var(--warn); }
+  kbd, .ui { font-family: "Segoe UI", Arial, sans-serif; font-weight: 600; background: #eef1f6; border: 1px solid var(--border); border-radius: 3px; padding: 0 5px; white-space: nowrap; }
+  @media (max-width: 860px) { .layout { display: block; } nav { position: static; width: auto; } main { padding: 16px; } section { padding: 4px 14px 14px; } td, th { overflow-wrap: anywhere; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Multi-Recorder User Guide</h1>
+  <p>Record and monitor NDI, USB, Epiphan and Datapath video sources on Windows.</p>
+</header>
+<div class="layout">
+<nav>
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#overview">Main window overview</a></li>
+    <li><a href="#sources">Choosing a video source</a></li>
+    <li><a href="#settings">Recording settings</a></li>
+    <li><a href="#anonymization">Masking private information</a></li>
+    <li><a href="#record">Recording a video</a></li>
+    <li><a href="#existing">When the file already exists</a></li>
+    <li><a href="#viewonly">View only (2 or 4 views)</a></li>
+    <li><a href="#ndisettings">NDI device settings</a></li>
+    <li><a href="#status">Status and information lines</a></li>
+    <li><a href="#build">Build number</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+  </ol>
+</nav>
+<main>
+
+<section id="overview">
+  <h2>1. Main window overview</h2>
+  <p>When Multi-Recorder starts it opens the <b>recording screen</b>. The selected source is shown in the live preview, and all recording settings are above it.</p>
+  <figure>
+    <img src="images/main-screen.png" alt="Multi-Recorder recording screen with a live NDI preview">
+    <figcaption>Figure 1 – Recording screen with a live preview of an NDI source.</figcaption>
+  </figure>
+  <table>
+    <tr><th>Control</th><th>Purpose</th></tr>
+    <tr><td><span class="ui">Video source</span></td><td>Choose the NDI, USB, Epiphan, Datapath or VFW source to preview and record.</td></tr>
+    <tr><td><span class="ui">USB settings...</span> / <span class="ui">Device settings...</span></td><td>Choose the resolution and frame rate for a USB camera, or open the settings for an Epiphan or Datapath capture card. This button is disabled for NDI sources.</td></tr>
+    <tr><td><span class="ui">NDI device IP</span> + <span class="ui">Apply IP</span></td><td>Find NDI devices on another subnet by entering their IP address.</td></tr>
+    <tr><td><span class="ui">NDI settings...</span></td><td>Opens the web settings page of the selected NDI device in your browser (see <a href="#ndisettings">NDI device settings</a>).</td></tr>
+    <tr><td><span class="ui">Refresh</span></td><td>Search for sources again (for example, after you connect a new device).</td></tr>
+    <tr><td><span class="ui">Save to</span> + <span class="ui">Browse...</span></td><td>Output file name and folder.</td></tr>
+    <tr><td><span class="ui">Format</span>, <span class="ui">Bitrate</span>, <span class="ui">Record FPS</span>, <span class="ui">Color</span></td><td>How the video is encoded (see <a href="#settings">Recording settings</a>).</td></tr>
+    <tr><td><span class="ui">Draw mask</span> / <span class="ui">Clear masks</span></td><td>Draw up to two gray rectangles over private areas in the preview. Masks are permanently applied to the saved video.</td></tr>
+    <tr><td><span class="ui">User guide</span></td><td>Opens this guide. You can also press <kbd>F1</kbd>.</td></tr>
+    <tr><td><span class="ui">View only</span></td><td>Watch 2 or 4 sources side by side without recording.</td></tr>
+    <tr><td><span class="ui">Start recording</span></td><td>Start the recording. While recording, this button changes to <span class="ui">Stop recording</span>.</td></tr>
+  </table>
+</section>
+
+<section id="sources">
+  <h2>2. Choosing a video source</h2>
+  <ol>
+    <li>Open the <span class="ui">Video source</span> list and choose a source. The preview starts automatically.</li>
+    <li>If your device is missing, connect it and click <span class="ui">Refresh</span>.</li>
+    <li><b>NDI on another network:</b> type the device IP address (for example <code>172.22.2.2</code>) in <span class="ui">NDI device IP</span> and click <span class="ui">Apply IP</span>. The source list is cleared and refreshed, and after a few seconds the device's NDI sources appear together with the automatically discovered sources. To go back to automatic discovery only, clear the field and click <span class="ui">Apply IP</span> again.</li>
+    <li><b>USB cameras:</b> click <span class="ui">USB settings...</span> to choose the capture resolution and frame rate.</li>
+    <li><b>Epiphan / Datapath cards:</b> click <span class="ui">Device settings...</span> to open the card's own settings.</li>
+  </ol>
+  <div class="note"><b>DVI2USB green preview:</b> a DVI2USB connected to a sync-on-green composite signal shows a green picture. This is normal. Use <span class="ui">Color → Monochrome 8-bit (green channel)</span> to record it as a clean grayscale video.</div>
+</section>
+
+<section id="settings">
+  <h2>3. Recording settings</h2>
+  <figure>
+    <img src="images/settings.png" alt="Recording settings: MP4 H.264, bitrate 8 Mbps, custom 10 FPS, monochrome">
+    <figcaption>Figure 2 – Example: MP4 (H.264) at 8 Mbps, custom frame rate of 10 FPS, monochrome 8-bit. The preview shows how the recording will look.</figcaption>
+  </figure>
+
+  <h3>Save to</h3>
+  <p>Type a file name or click <span class="ui">Browse...</span> to choose a folder and name. If the file name has no folder, the file is saved in the folder the app was started from. The file extension follows the selected format (<code>.mp4</code> or <code>.avi</code>).</p>
+
+  <h3>Format</h3>
+  <table>
+    <tr><th>Format</th><th>When to use it</th></tr>
+    <tr><td>MP4 (H.264)</td><td>Small files that play everywhere. Good default choice.</td></tr>
+    <tr><td>MP4 (H.265/HEVC)</td><td>About half the size of H.264 at the same quality. Requires an HEVC-capable player.</td></tr>
+    <tr><td>AVI (uncompressed)</td><td>Exact pixels, no compression. Very large files – needs a fast disk.</td></tr>
+    <tr><td>AVI (Lagarith)</td><td>Lossless compression (exact pixels, smaller than uncompressed). Requires the Lagarith codec to be installed. Click <span class="ui">Codec settings...</span> to configure it.</td></tr>
+  </table>
+
+  <h3>Bitrate (Mbps)</h3>
+  <p>For MP4 formats only. Enter a value from <b>1 to 1000</b> Mbps, or leave it blank for <b>Auto</b>. A higher bitrate gives better quality and larger files.</p>
+
+  <h3>Record FPS</h3>
+  <table>
+    <tr><th>Choice</th><th>Result</th></tr>
+    <tr><td>Same as source</td><td>Records every frame at the source frame rate (default).</td></tr>
+    <tr><td>30 FPS / 15 FPS / 7.5 FPS</td><td>Records at a lower, fixed frame rate to make smaller files.</td></tr>
+    <tr><td>Custom FPS</td><td>A box appears next to the list. Enter any rate from <b>1 to 85</b> FPS; decimals are allowed (for example <code>12.5</code>).</td></tr>
+  </table>
+
+  <h3>Color</h3>
+  <table>
+    <tr><th>Choice</th><th>Result</th></tr>
+    <tr><td>Source color</td><td>Records the picture as it arrives.</td></tr>
+    <tr><td>Monochrome 8-bit (green channel)</td><td>Records only the green channel as 8-bit grayscale. Use this for sync-on-green sources such as the DVI2USB. The preview changes to gray, so you can check the result before you record.</td></tr>
+  </table>
+  <h3 id="anonymization">Masking private information (anonymization)</h3>
+  <ol>
+    <li>Select the source you plan to record and wait for its live preview.</li>
+    <li>Click <span class="ui">Draw mask (0/2)</span>, then drag a rectangle over the private area in the video picture. Drag inside the picture, not the black bars around it.</li>
+    <li>To cover a second area, drag another rectangle. To stop after one mask, click <span class="ui">Draw mask (1/2)</span> again. Click <span class="ui">Clear masks</span> to remove all masks and start over.</li>
+    <li>Check that every private area is fully covered by a gray rectangle before clicking <span class="ui">Start recording</span>.</li>
+  </ol>
+  <figure>
+    <img src="images/masking.png" alt="Recording screen with two gray masks covering the clock and the QR code in the preview">
+    <figcaption>Figure 3 – Two gray masks drawn over private areas. <span class="ui">Draw mask</span> shows (2/2) and is disabled until you clear the masks.</figcaption>
+  </figure>
+  <div class="warn"><b>Important:</b> masks are permanently applied to every frame in the saved recording; the covered original pixels are not included in the output. Masks stay at the same source position and do not follow moving content. Changing the video source clears the masks.</div>
+  <div class="note">Settings cannot be changed while recording. Stop the recording first.</div>
+</section>
+
+<section id="record">
+  <h2>4. Recording a video</h2>
+  <ol>
+    <li>Choose the source and settings as described above. If needed, add privacy masks before recording and check that they fully cover the private information in the preview.</li>
+    <li>Click <span class="ui">Start recording</span>. The settings are locked, the status line shows <i>Recording video...</i> and the <span class="ui">Recording time</span> counter starts.</li>
+    <li>Click <span class="ui">Stop recording</span> to finish. The status line shows <i>Recording saved.</i></li>
+  </ol>
+  <figure>
+    <img src="images/recording.png" alt="Recording in progress with the recording timer running">
+    <figcaption>Figure 4 – Recording in progress. The settings are locked and the timer is running.</figcaption>
+  </figure>
+  <div class="note">Multi-Recorder records video only (no audio).</div>
+</section>
+
+<section id="existing">
+  <h2>5. When the file already exists</h2>
+  <p>If a file with the same name already exists when you click <span class="ui">Start recording</span>, Multi-Recorder asks what to do:</p>
+  <figure>
+    <img src="images/file-exists.png" alt="Dialog: Output file already exists">
+    <figcaption>Figure 5 – Output file already exists.</figcaption>
+  </figure>
+  <table>
+    <tr><th>Button</th><th>Result</th></tr>
+    <tr><td>Overwrite existing file</td><td>Replaces the old recording. <b>The old file is lost.</b></td></tr>
+    <tr><td>Use numbered filename</td><td>Keeps the old file and records to the next free name, for example <code>ndi-recording_1.mp4</code>.</td></tr>
+    <tr><td>Choose another filename...</td><td>Opens a Save dialog so you can choose a new name or folder.</td></tr>
+    <tr><td>Cancel</td><td>Does not start recording.</td></tr>
+  </table>
+</section>
+
+<section id="viewonly">
+  <h2>6. View only (2 or 4 views)</h2>
+  <p>Click <span class="ui">View only</span> on the recording screen to watch several sources at the same time. Nothing is recorded in this mode.</p>
+  <figure>
+    <img src="images/view-only-2.png" alt="View only mode with 2 views">
+    <figcaption>Figure 6 – Two views. View 1 shows an NDI source; view 2 is searching for NDI sources at an IP address.</figcaption>
+  </figure>
+  <ol>
+    <li>Choose <b>2 views</b> or <b>4 views</b> in the <span class="ui">View only</span> list at the top.</li>
+    <li>Use the list above each view to choose its source.</li>
+    <li><b>Connect a view by IP:</b> type the NDI device IP in that view's <span class="ui">IP</span> box and click <span class="ui">Connect</span> (or press <kbd>Enter</kbd>). The view searches for up to 15 seconds and shows the first source at that address that is not already shown in another view. The other views keep playing.</li>
+    <li>Click <span class="ui">Refresh</span> to search for sources again.</li>
+    <li>Click <span class="ui">Back to record</span> to return to the recording screen.</li>
+  </ol>
+  <figure>
+    <img src="images/view-only-4.png" alt="View only mode with 4 views">
+    <figcaption>Figure 7 – Four views. View 2 reports that every source at the IP address is already shown in another view.</figcaption>
+  </figure>
+  <table>
+    <tr><th>Message in a view</th><th>Meaning</th></tr>
+    <tr><td>Select a video source</td><td>No source has been chosen for this view yet.</td></tr>
+    <tr><td>Searching for NDI sources at &lt;IP&gt;...</td><td>Waiting for the device to answer (up to 15 seconds).</td></tr>
+    <tr><td>No NDI source found at &lt;IP&gt;</td><td>Check the IP address, the network connection, and that the device is sending NDI.</td></tr>
+    <tr><td>Every NDI source at &lt;IP&gt; is already shown in another view</td><td>All sources of this device are already on screen. Choose another source or device.</td></tr>
+  </table>
+</section>
+
+<section id="ndisettings">
+  <h2>7. NDI device settings</h2>
+  <p>Many NDI devices (for example converters and cameras) have their own settings web page. To open it:</p>
+  <ol>
+    <li>Select the NDI source in <span class="ui">Video source</span> and wait for the preview, so the <b>Source IP</b> line shows its address.</li>
+    <li>Click <span class="ui">NDI settings...</span>. The device's web page (for example <code>http://172.22.2.2/</code>) opens in your default web browser.</li>
+    <li>Log in with the device's own username and password if it asks for them, and change the settings there.</li>
+  </ol>
+  <p>The button is disabled while recording. If the selected source is not an NDI source, or its IP address is not known yet, the app shows a message instead.</p>
+  <p>The <span class="ui">NDI device IP</span> you apply on the main screen is remembered the next time you open the app.</p>
+</section>
+
+<section id="status">
+  <h2>8. Status and information lines</h2>
+  <table>
+    <tr><th>Line</th><th>Shows</th></tr>
+    <tr><td>Status (below the buttons)</td><td>What the app is doing: connecting, recording, saved, or an error message.</td></tr>
+    <tr><td>Recording time</td><td>Length of the current (or last) recording.</td></tr>
+    <tr><td>Video</td><td>Source resolution and frame rate.</td></tr>
+    <tr><td>Source IP</td><td>Network address of the selected NDI source.</td></tr>
+    <tr><td>System</td><td>CPU, memory, disk and GPU load. If the disk or CPU stays near 100%, use a compressed format or a lower frame rate.</td></tr>
+  </table>
+</section>
+
+<section id="build">
+  <h2>9. Build number</h2>
+  <p>The window title shows the version and build number, for example <b>Multi-Recorder v1.0 (Build 4)</b>. Please include the build number when you report a problem.</p>
+</section>
+
+<section id="troubleshooting">
+  <h2>10. Troubleshooting</h2>
+  <table>
+    <tr><th>Problem</th><th>What to try</th></tr>
+    <tr><td>Source is not in the list</td><td>Click <span class="ui">Refresh</span>. For NDI on another subnet, enter its IP and click <span class="ui">Apply IP</span>. Check that the device is sending NDI and that the PC and the device are on a reachable network, or that the capture card driver is installed.</td></tr>
+    <tr><td>"Enter a numeric IPv4 or IPv6 address"</td><td>Use a numeric address such as <code>192.168.1.20</code>, not a host name.</td></tr>
+    <tr><td>Bitrate or Custom FPS error</td><td>Bitrate must be 1–1000 Mbps (or blank); Custom FPS must be 1–85.</td></tr>
+    <tr><td>"Lagarith unavailable"</td><td>Install the Lagarith codec, or choose another format.</td></tr>
+    <tr><td>DVI2USB preview is green</td><td>This is expected for sync-on-green signals. Choose <span class="ui">Monochrome 8-bit (green channel)</span>.</td></tr>
+    <tr><td>Recording drops frames or stutters</td><td>Watch the <b>System</b> line. Use MP4, a lower Record FPS, or save to a faster local disk.</td></tr>
+  </table>
+</section>
+
+</main>
+</div>
+</body>
+</html>

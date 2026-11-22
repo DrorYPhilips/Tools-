@@ -1,0 +1,20 @@
+^D:\ONEDRIVE - PHILIPS\DOCUMENTS\PLATFORMIO\PROJECTS\RECORDING APP\BUILD\CMAKEFILES\802FFAE14AAD72EE58B22F2441DDDD80\USER-GUIDE.RULE
+setlocal
+C:\Users\310212290\AppData\Local\Programs\msys64\ucrt64\bin\cmake.exe -E copy_directory "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/docs/user-guide" "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/user-guide"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\ONEDRIVE - PHILIPS\DOCUMENTS\PLATFORMIO\PROJECTS\RECORDING APP\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app" "-BD:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build" --check-stamp-file "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

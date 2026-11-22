@@ -1,0 +1,4 @@
+#pragma once
+#define APP_VERSION L"1.0"
+#define APP_REVISION L"@APP_REVISION@"
+#define APP_BUILD_NUMBER L"@APP_BUILD_NUMBER@"

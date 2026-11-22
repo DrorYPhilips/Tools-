@@ -1,0 +1,222 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United Kingdom) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    "RGB.ICO"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DISPLAY DIALOGEX 0, 0, 432, 228
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Video"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "RGB Source",IDC_STATIC,7,3,205,33,WS_GROUP
+    LTEXT           "&Input",IDC_STATIC,15,18,17,8
+    COMBOBOX        IDC_INPUTSOURCE,39,16,106,193,CBS_DROPDOWNLIST | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Capture Settings",IDC_CAPTSETTINGS,7,40,205,170,WS_GROUP
+    LTEXT           "Width",IDC_ADDRWIDTHSTATIC,15,55,20,8
+    EDITTEXT        IDC_ADDRWIDTH,47,52,42,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_ADDRWIDTHSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,89,52,10,14
+    LTEXT           "Height",IDC_ADDRHEIGHTSTATIC,100,55,22,8
+    EDITTEXT        IDC_ADDRHEIGHT,132,52,42,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin2",IDC_ADDRHEIGHTSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,173,52,10,14
+    LTEXT           "Horizontal Position",IDC_HOROFFSETSTATIC,15,77,59,8
+    SCROLLBAR       IDC_HOROFFSET,76,73,97,14,WS_TABSTOP
+    LTEXT           "",IDC_HOROFFSETVALUE,181,77,17,8
+    LTEXT           "Horizontal Size",IDC_HORSCALESTATIC,15,96,48,8
+    SCROLLBAR       IDC_HORSCALE,76,92,97,14,WS_TABSTOP
+    LTEXT           "",IDC_HORSCALEVALUE,181,96,17,8
+    LTEXT           "Phase",IDC_PHASESTATIC,15,115,21,8
+    SCROLLBAR       IDC_PHASE,76,111,97,14,WS_TABSTOP
+    LTEXT           "",IDC_PHASEVALUE,181,115,17,8
+    LTEXT           "Vertical Position",IDC_VEROFFSETSTATIC,15,134,51,8
+    SCROLLBAR       IDC_VEROFFSET,76,130,97,14,WS_TABSTOP
+    LTEXT           "",IDC_VEROFFSETVALUE,181,134,17,8
+    LTEXT           "Black Level",IDC_BLACKLEVELSTATIC,15,153,38,8
+    SCROLLBAR       IDC_BLACKLEVEL,76,149,97,14,WS_TABSTOP
+    LTEXT           "",IDC_BLACKLEVELVALUE,181,153,17,8
+    LTEXT           "Brightness",IDC_BRIGHTNESSSTATIC,15,172,40,8
+    SCROLLBAR       IDC_BRIGHTNESS,76,168,97,14,WS_TABSTOP
+    LTEXT           "",IDC_BRIGHTNESSVALUE,181,172,17,8
+    LTEXT           "Contrast",IDC_CONTRASTSTATIC,15,191,40,8
+    SCROLLBAR       IDC_CONTRAST,76,187,97,14,WS_TABSTOP
+    LTEXT           "",IDC_CONTRASTVALUE,181,191,17,8
+    GROUPBOX        "Cropping",IDC_CROPPING,220,3,205,48,WS_GROUP
+    CONTROL         "Off",IDC_CROPPINGOFF,"Button",BS_AUTORADIOBUTTON | BS_CENTER | BS_VCENTER | WS_TABSTOP,228,16,25,10
+    CONTROL         "On",IDC_CROPPINGON,"Button",BS_AUTORADIOBUTTON | BS_CENTER | BS_VCENTER,228,35,25,10
+    LTEXT           "Top",IDC_TOPSTATIC,275,17,14,8
+    EDITTEXT        IDC_TOP,294,14,40,14,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_TOPSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,327,14,11,14
+    LTEXT           "Left",IDC_LEFTSTATIC,276,36,13,8
+    EDITTEXT        IDC_LEFT,294,33,40,14,ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_LEFTSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,328,33,11,14
+    LTEXT           "Width",IDC_WIDTHSTATIC,345,17,22,8
+    EDITTEXT        IDC_WIDTH,375,14,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_WIDTHSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,408,14,11,14
+    LTEXT           "Height",IDC_HEIGHTSTATIC,345,36,22,8
+    EDITTEXT        IDC_HEIGHT,375,33,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_HEIGHTSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,408,33,11,14
+END
+
+IDD_AUDIO DIALOGEX 0, 0, 432, 228
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Audio"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Unbalanced Input",IDC_STATIC,220,8,204,58
+    CONTROL         "Mute",IDC_MUTEUNBALANCEDCHECKED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,24,32,10
+    LTEXT           "Gain",IDC_STATIC,228,42,16,8
+    SCROLLBAR       IDC_UNBALANCEDGAIN,265,40,115,12
+    LTEXT           "0",IDC_UNBALANCEDGAINVAL,384,42,34,8
+    GROUPBOX        "Balanced Input",IDC_STATIC,220,73,204,58
+    CONTROL         "Mute",IDC_MUTEBALANCEDCHECKED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,89,32,10
+    LTEXT           "Gain",IDC_STATIC,228,108,16,8
+    SCROLLBAR       IDC_BALANCEDGAIN,266,107,115,12
+    LTEXT           "0",IDC_BALANCEDGAINVAL,384,110,33,8
+    GROUPBOX        "Digital Input",IDC_STATIC,8,55,204,51
+    COMBOBOX        IDC_COMBO_CHANNELSELECT,74,83,128,54,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Mute",IDC_MUTECHECKED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,71,32,10
+    GROUPBOX        "Line Out",IDC_STATIC,8,114,204,83
+    CONTROL         "Analogue",IDC_ANALOGUERADIO,"Button",BS_AUTORADIOBUTTON,93,175,46,10
+    CONTROL         "Digital",IDC_DIGITALRADIO,"Button",BS_AUTORADIOBUTTON,51,175,35,10
+    CONTROL         "Mute",IDC_MUTELINEOUTCHECKED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,130,32,10
+    LTEXT           "Gain",IDC_STATIC,18,150,16,8
+    SCROLLBAR       IDC_LINEOUTVOLUME,51,147,115,12
+    LTEXT           "0",IDC_LINEOUTVOLUMEVAL,169,150,38,8
+    CONTROL         "Boost 20dB",IDC_BOOSTBALANCEDCHECKED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,267,89,53,10
+    GROUPBOX        "Output Mixer",IDC_STATIC,220,139,204,58
+    CONTROL         "Mute",IDC_MUTEOUTPUTMIXERCHECKED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,227,154,32,10
+    LTEXT           "Gain",IDC_STATIC,227,174,16,8
+    SCROLLBAR       IDC_OUTPUTMIXERVOLUME,265,173,115,12
+    LTEXT           "0",IDC_OUTPUTMIXERVOLUMEVAL,384,176,33,8
+    LTEXT           "Stereo Pair",IDC_STATIC,16,86,36,8
+    GROUPBOX        "Format",IDC_STATIC,8,8,204,40
+    COMBOBOX        IDC_COMBO_SAMPLESELECT,74,24,128,56,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Sample Rate",IDC_STATIC,16,27,42,8
+    LTEXT           "Source",IDC_STATIC,17,175,24,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "&Properties"
+    BEGIN
+        MENUITEM "AV Settings...",              IDM_INPUTSETTINGS
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DISPLAY, DIALOG
+    BEGIN
+    END
+
+    IDD_AUDIO, DIALOG
+    BEGIN
+        LEFTMARGIN, 8
+        RIGHTMARGIN, 422
+        VERTGUIDE, 8
+        VERTGUIDE, 16
+        VERTGUIDE, 48
+        VERTGUIDE, 74
+        VERTGUIDE, 212
+        VERTGUIDE, 219
+        VERTGUIDE, 227
+        VERTGUIDE, 234
+        VERTGUIDE, 424
+        TOPMARGIN, 8
+        BOTTOMMARGIN, 220
+        HORZGUIDE, 33
+        HORZGUIDE, 48
+        HORZGUIDE, 102
+        HORZGUIDE, 142
+        HORZGUIDE, 184
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United Kingdom) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

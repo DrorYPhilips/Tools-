@@ -1,0 +1,20 @@
+^D:\ONEDRIVE - PHILIPS\DOCUMENTS\PLATFORMIO\PROJECTS\RECORDING APP\BUILD\CMAKEFILES\802FFAE14AAD72EE58B22F2441DDDD80\NDI-RECORDER-USER-GUIDE.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-DSOURCE=D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/docs/user-guide" "-DDESTINATION=D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/NDI-Recorder/user-guide" -DEDITION=ndi -P "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/cmake/copy-user-guide.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\ONEDRIVE - PHILIPS\DOCUMENTS\PLATFORMIO\PROJECTS\RECORDING APP\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app" "-BD:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build" --check-stamp-file "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,660 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "NdiRecorder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Debug-c0d2fe0c823e6fcc7267.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Continuous::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Continuous-Debug-e8dd1261f4eaf8c68ee9.json",
+					"name" : "Continuous",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Experimental::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Experimental-Debug-227b67913578768aac86.json",
+					"name" : "Experimental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Nightly::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Nightly-Debug-925009125954b2f7216f.json",
+					"name" : "Nightly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemoryCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemoryCheck-Debug-b8d031b38e4d1c54e56a.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Debug-ebe1fbb64c9d324dbade.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-multi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-multi-Debug-3c9fa3382bc0e3527e5a.json",
+					"name" : "guide-screenshots-multi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-ndi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-ndi-Debug-366508019af593df7d7f.json",
+					"name" : "guide-screenshots-ndi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-Debug-e3d77e8c925e088f05a6.json",
+					"name" : "multi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-tests-Debug-d4296244b794e1989d46.json",
+					"name" : "multi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-user-guide-Debug-fabbbf5c59fb76438288.json",
+					"name" : "multi-recorder-user-guide",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-Debug-a79b9dbd38a7c48a9492.json",
+					"name" : "ndi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-tests-Debug-79056b12c4d555a62936.json",
+					"name" : "ndi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-user-guide-Debug-add5c1b21c33fb30c032.json",
+					"name" : "ndi-recorder-user-guide",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "NdiRecorder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Release-c0d2fe0c823e6fcc7267.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Continuous::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Continuous-Release-e8dd1261f4eaf8c68ee9.json",
+					"name" : "Continuous",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Experimental::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Experimental-Release-227b67913578768aac86.json",
+					"name" : "Experimental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Nightly::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Nightly-Release-925009125954b2f7216f.json",
+					"name" : "Nightly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemoryCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemoryCheck-Release-b8d031b38e4d1c54e56a.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Release-ebe1fbb64c9d324dbade.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-multi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-multi-Release-73e524d9f524d1b2bc2b.json",
+					"name" : "guide-screenshots-multi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-ndi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-ndi-Release-c975e1ac567bad104897.json",
+					"name" : "guide-screenshots-ndi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-Release-a23ed67ce72d33b36884.json",
+					"name" : "multi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-tests-Release-2149f6b198cf1b435128.json",
+					"name" : "multi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-user-guide-Release-fabbbf5c59fb76438288.json",
+					"name" : "multi-recorder-user-guide",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-Release-456e37f67b73e4346265.json",
+					"name" : "ndi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-tests-Release-85a898ca849932d7d5b6.json",
+					"name" : "ndi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-user-guide-Release-add5c1b21c33fb30c032.json",
+					"name" : "ndi-recorder-user-guide",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-MinSizeRel-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"name" : "MinSizeRel",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "NdiRecorder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-c0d2fe0c823e6fcc7267.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Continuous::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Continuous-MinSizeRel-e8dd1261f4eaf8c68ee9.json",
+					"name" : "Continuous",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Experimental::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Experimental-MinSizeRel-227b67913578768aac86.json",
+					"name" : "Experimental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Nightly::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Nightly-MinSizeRel-925009125954b2f7216f.json",
+					"name" : "Nightly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemoryCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemoryCheck-MinSizeRel-b8d031b38e4d1c54e56a.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-ebe1fbb64c9d324dbade.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-multi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-multi-MinSizeRel-5ed920d3f8ab32373a8c.json",
+					"name" : "guide-screenshots-multi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-ndi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-ndi-MinSizeRel-4d4a178a16fa921fa334.json",
+					"name" : "guide-screenshots-ndi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-MinSizeRel-0c9043aeec0915ceda7f.json",
+					"name" : "multi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-tests-MinSizeRel-9f4d8a3aa2b10406925d.json",
+					"name" : "multi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-user-guide-MinSizeRel-fabbbf5c59fb76438288.json",
+					"name" : "multi-recorder-user-guide",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-MinSizeRel-7185e0003b0758106e99.json",
+					"name" : "ndi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-tests-MinSizeRel-b888c06926b69ff72ea6.json",
+					"name" : "ndi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-user-guide-MinSizeRel-add5c1b21c33fb30c032.json",
+					"name" : "ndi-recorder-user-guide",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "NdiRecorder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-c0d2fe0c823e6fcc7267.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Continuous::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Continuous-RelWithDebInfo-e8dd1261f4eaf8c68ee9.json",
+					"name" : "Continuous",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Experimental::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Experimental-RelWithDebInfo-227b67913578768aac86.json",
+					"name" : "Experimental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Nightly::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Nightly-RelWithDebInfo-925009125954b2f7216f.json",
+					"name" : "Nightly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemoryCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemoryCheck-RelWithDebInfo-b8d031b38e4d1c54e56a.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-ebe1fbb64c9d324dbade.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-multi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-multi-RelWithDebInfo-2c569eeb5b41ff87a206.json",
+					"name" : "guide-screenshots-multi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "guide-screenshots-ndi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-guide-screenshots-ndi-RelWithDebInfo-f47da3140418f66f1d62.json",
+					"name" : "guide-screenshots-ndi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-RelWithDebInfo-54d9ca694751257649a7.json",
+					"name" : "multi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-tests-RelWithDebInfo-5531675b28d74df922f6.json",
+					"name" : "multi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "multi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-multi-recorder-user-guide-RelWithDebInfo-fabbbf5c59fb76438288.json",
+					"name" : "multi-recorder-user-guide",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-RelWithDebInfo-c6f76bc87e2ac52282af.json",
+					"name" : "ndi-recorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-tests-RelWithDebInfo-cea827383aaf43c230ea.json",
+					"name" : "ndi-recorder-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndi-recorder-user-guide::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndi-recorder-user-guide-RelWithDebInfo-add5c1b21c33fb30c032.json",
+					"name" : "ndi-recorder-user-guide",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build",
+		"source" : "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

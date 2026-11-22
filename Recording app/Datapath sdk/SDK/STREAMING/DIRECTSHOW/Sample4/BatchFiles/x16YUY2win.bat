@@ -1,0 +1,16 @@
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=0,0,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=0,240,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=0,480,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=0,720,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=320,0,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=320,240,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=320,480,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=320,720,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=640,0,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=640,240,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=640,480,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=640,720,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=960,0,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=960,240,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=960,480,320,240
+start Sample4 -input=1 -fps=60 -subformat=YUY2 -buffer=320,240 -window=960,720,320,240

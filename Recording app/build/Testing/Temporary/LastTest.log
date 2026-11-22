@@ -1,0 +1,113 @@
+Start testing: Nov 19 17:44 Jerusalem Standard Time
+----------------------------------------------------------
+5/12 Testing: recording-frame-rate
+5/12 Test: recording-frame-rate
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/multi-recorder-tests.exe" "--frame-rate"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"recording-frame-rate" start time: Nov 19 17:44 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+Checking queued FPS: format 1, rate source
+Checking queued FPS: format 0, rate source
+Checking queued FPS: format 1, rate 30/1
+Checking queued FPS: format 0, rate 30/1
+Checking queued FPS: format 1, rate 15/1
+Checking queued FPS: format 0, rate 15/1
+Checking queued FPS: format 1, rate 15/2
+Checking queued FPS: format 0, rate 15/2
+Checking queued FPS: format 1, rate 29970/1000
+Checking queued FPS: format 0, rate 29970/1000
+Checking queued FPS: format 1, rate 1/1
+Checking queued FPS: format 0, rate 1/1
+Checking queued FPS: format 1, rate 85/1
+Checking queued FPS: format 0, rate 85/1
+Recording FPS parsing, resampling, AVI and MP4 checks passed.
+<end of output>
+Test time =   1.81 sec
+----------------------------------------------------------
+Test Passed.
+"recording-frame-rate" end time: Nov 19 17:44 Jerusalem Standard Time
+"recording-frame-rate" time elapsed: 00:00:01
+----------------------------------------------------------
+
+6/12 Testing: recording-monochrome
+6/12 Test: recording-monochrome
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/multi-recorder-tests.exe" "--monochrome"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"recording-monochrome" start time: Nov 19 17:44 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+Monochrome AVI and MP4 recording checks passed.
+<end of output>
+Test time =   1.22 sec
+----------------------------------------------------------
+Test Passed.
+"recording-monochrome" end time: Nov 19 17:44 Jerusalem Standard Time
+"recording-monochrome" time elapsed: 00:00:01
+----------------------------------------------------------
+
+7/12 Testing: recording-privacy-masks
+7/12 Test: recording-privacy-masks
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/multi-recorder-tests.exe" "--privacy-masks"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"recording-privacy-masks" start time: Nov 19 17:44 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+Privacy mask frame checks passed.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"recording-privacy-masks" end time: Nov 19 17:44 Jerusalem Standard Time
+"recording-privacy-masks" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/12 Testing: user-guide
+9/12 Test: user-guide
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/multi-recorder-tests.exe" "--user-guide" "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/Multi-Recorder/user-guide/index.html"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"user-guide" start time: Nov 19 17:44 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+User guide and screenshot checks passed.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"user-guide" end time: Nov 19 17:44 Jerusalem Standard Time
+"user-guide" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/12 Testing: ndi-edition-sources
+11/12 Test: ndi-edition-sources
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/ndi-recorder-tests.exe" "--ndi-edition"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"ndi-edition-sources" start time: Nov 19 17:44 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+NDI-Recorder edition checks passed.
+<end of output>
+Test time =   1.27 sec
+----------------------------------------------------------
+Test Passed.
+"ndi-edition-sources" end time: Nov 19 17:44 Jerusalem Standard Time
+"ndi-edition-sources" time elapsed: 00:00:01
+----------------------------------------------------------
+
+12/12 Testing: ndi-edition-user-guide
+12/12 Test: ndi-edition-user-guide
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/ndi-recorder-tests.exe" "--user-guide" "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/NDI-Recorder/user-guide/index.html"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"ndi-edition-user-guide" start time: Nov 19 17:44 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+User guide and screenshot checks passed.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"ndi-edition-user-guide" end time: Nov 19 17:44 Jerusalem Standard Time
+"ndi-edition-user-guide" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 19 17:44 Jerusalem Standard Time

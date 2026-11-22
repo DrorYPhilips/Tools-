@@ -1,0 +1,5 @@
+EXPORTS
+    OpenSharedAudio
+    CloseSharedAudio
+    GetAudioFormatIndex
+

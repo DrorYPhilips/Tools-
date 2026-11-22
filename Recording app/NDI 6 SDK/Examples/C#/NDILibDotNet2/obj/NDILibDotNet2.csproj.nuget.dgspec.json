@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\OneDrive - Philips\\Documents\\PlatformIO\\Projects\\Recording app\\NDI 6 SDK\\Examples\\C#\\NDILibDotNet2\\NDILibDotNet2.csproj": {}
+  },
+  "projects": {
+    "D:\\OneDrive - Philips\\Documents\\PlatformIO\\Projects\\Recording app\\NDI 6 SDK\\Examples\\C#\\NDILibDotNet2\\NDILibDotNet2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OneDrive - Philips\\Documents\\PlatformIO\\Projects\\Recording app\\NDI 6 SDK\\Examples\\C#\\NDILibDotNet2\\NDILibDotNet2.csproj",
+        "projectName": "NDILibDotNet2",
+        "projectPath": "D:\\OneDrive - Philips\\Documents\\PlatformIO\\Projects\\Recording app\\NDI 6 SDK\\Examples\\C#\\NDILibDotNet2\\NDILibDotNet2.csproj",
+        "packagesPath": "C:\\Users\\310212290\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive - Philips\\Documents\\PlatformIO\\Projects\\Recording app\\NDI 6 SDK\\Examples\\C#\\NDILibDotNet2\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "UsingMicrosoftNETSdk": false,
+        "configFilePaths": [
+          "C:\\Users\\310212290\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "framework": "net472",
+            "projectReferences": {}
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "framework": "net472",
+          "dependencies": {
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}

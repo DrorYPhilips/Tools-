@@ -1,0 +1,13 @@
+recording-orientation 47 0.403091
+hevc-compression 34 0.0948673
+lagarith-compression 28 0.0047914
+mp4-bitrate 27 0.0135601
+recording-frame-rate 17 0.106352
+recording-monochrome 12 0.102064
+user-guide 13 0.00749116
+ndi-edition-recording 6 2.44772
+ndi-edition-sources 9 0.141654
+ndi-edition-user-guide 13 0.00733643
+ndi-settings 5 0.223919
+recording-privacy-masks 4 0.0243003
+---

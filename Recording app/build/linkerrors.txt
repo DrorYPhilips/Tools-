@@ -1,0 +1,11 @@
+================================================================================
+Linker Errors
+Generated: 2026-11-16T06:48:17.500Z
+Total Errors: 2
+================================================================================
+
+[LNK2019] (MSVC)
+unresolved external symbol FrmGrab_IsAlive referenced in function "void __cdecl `anonymous namespace'::PreviewEpiphan(struct A0x7d868d09::NdiSource)" (?PreviewEpiphan@?A0x7d868d09@@YAXUNdiSource@1@@Z) [D:\OneDrive - Philips\Documents\PlatformIO\Projects\Recording app\build\ndi-recorder.vcxproj]
+
+[LNK1120] (MSVC)
+1 unresolved externals [D:\OneDrive - Philips\Documents\PlatformIO\Projects\Recording app\build\ndi-recorder.vcxproj]

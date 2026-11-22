@@ -1,0 +1,245 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+   <style type="text/css">
+      body { background-color: #fff; background-image:url('WATERMRK.BMP'); background-repeat: no-repeat; background-position: 100% 10px; font-size: 0.8em; font-family: Verdana, Arial, Helvetica, sans-serif; }
+      table { font-size: 0.9em; font-family: Verdana, Arial, Helvetica, sans-serif; }
+      h1 { color: #369; font-size: 1.8em; }
+      h2 { color: #369; font-size: 1.4em; }
+      h3 { color: #369; font-size: 1em; }
+      h4 { color: black; font-size: 1em; font-weight: 600; }
+      .bold { font-weight: bold; }
+      .parm { font-weight: bold; font-style: oblique; }
+      .typein { font-family: "Lucida Console", "Courier New", monospace; font-weight: 500; }
+      .eg { margin-top: 0.5em; text-indent: 1em; }
+      .expl { text-indent: 2em; }
+      .note { margin-top: 0.5em; }
+      .verhead { margin-top: 1.5em; }
+      .header { width: 100%; margin-top: 2em; border-bottom: 2px solid #888; height: 58px; }
+      .footer { width: 100%; margin-top: 3em; border-top: 2px solid #888; }
+      span.hwlist { font-family: Helvetica,Arial,sans-serif; }
+      span.filename { font-family: "Lucida Console", "Courier New", monospace; font-style: italic; font-weight: bold; }
+      div.footer div { margin-top: 1em; }
+      div.smalltext { font-size: small; }
+      div.rowhdr { border-bottom: 1px solid black; width: 913px; }
+      div.row { width: 911px; border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; }
+      div.cat { width: 186px; float: left; }
+      div.item { border-left: 1px solid black; width: 725px; margin-left:186px; padding-bottom: 4px;}
+      div.subitem { border-left: 1px solid black; width: 725px; margin-left:186px; padding-bottom: 4px;}
+      div.header { height: 58px; }
+      ul.inforeq { list-style: none; }
+      ul.list { list-style: none; }
+      p.italic-header { font-style: italic; }
+   </style>
+
+   <meta http-equiv="content-type" content="text/html;charset=utf-8">
+   <title>OEM_VISIONRGB_HDSQX Quick Start Guide</title>
+</head>
+<body>
+    <div class="header">
+        <h1>OEM_VISIONRGB_HDSQX Quick Start Guide</h1>
+    </div>
+
+
+   <h2>Introduction</h2>
+
+   OEM_NAME's OEM_SQX_TAG encoding technology uses the global H.264 standard for video compression and streaming. Multiple streams of captured video can be simultaneously encoded and streamed to different locations. The OEM_VISIONRGB_HDSQX can capture two 1920x1200 channels<!--DMJ-->; the encoding engine can be configured to encode one channel at 60 FPS or both at 30 FPS. Video input frames are encoded to an elementary H.264 byte stream. The RGBEasy SDK provides sample applications to stream the elementary H.264 video to multiple network and disk end points.
+
+   <hr>
+
+   <h2>Hardware Overview</h2>
+
+<!--   <span class="hwlist"> -->
+<!--      <div class="smalltext"> -->
+   <ul class="list">
+      <li>Channel 1: HDMI / DVI / RGB / YPbPr / H.264 Video capture and/or encode</li>
+      <li>Channel 2: SD/Composite capture channel</li>
+      <li>Channel 3: HDMI / DVI / RGB / YPbPr / H.264 Video capture and/or encode</li>
+   </ul>
+<!--      </div> -->
+<!--   </span> -->
+
+   <hr>
+
+   <h2>Available Utilities</h2>
+   
+   <p>In order to stream encoded sources using RTSP OEM_COMPANY provide two applications; OEM_SQX_TAG Server Unicast and OEM_SQX_TAG Server Multicast.</p>
+   
+   <p>The applications are available to download from our web site at: OEM_URL</p>
+
+   <h3>OEM_SQX_TAG Server Unicast</h3>
+   
+   <p>Run the Unicast server application from the Windows Start Menu (under the OEM_SQX_TAG folder) to obtain a list of available RTSP media session URIs. OEM_SQX_TAG Server Unicast can be used to create input handles for use with OEM_COMPANY OEM_ACTIVESQX or advanced media server applications such as VLC or WOWZA.</p>
+   
+   <img width="982" height="308" alt="Sample6 example output" src="Images/sample6.jpg">
+
+   <p>The URL is in the form:</p>
+
+   <p><div class="typein">rtsp:\\&lt;ipaddress&gt;:&lt;port&gt;/input&lt;input&gt;?resolution=&lt;width&gtx&lt;height&gt;&amp;rate=&lt;rate&gt;</div></p>
+   <p><ul class="list">
+      <li>&lt;ipaddress&gt; is the IP address of the server computer</li>
+      <li>&lt;port&gt; is the port on which the stream is sent,</li>
+      <li>&lt;input&gt; is the Vision input number,</li>
+      <li>&lt;width&gt; and &lt;height&gt; are the number of horizontal pixels and vertical pixels respectively,</li>
+      <li>&lt;rate&gt; is the frame rate in mHz.</li>
+   </ul></p>
+   <p>The application is a unicast streaming server that supports Vision capture inputs. The application advertises available H.264 compatible Vision inputs as sockets, and displays the required rtsp <!--DMJ socket address-->URL. Note that the Vision input(s) are not yet opened for encoding in this application.</p>
+
+   <p>A client application can connect to the exposed socket using the socket address. OEM_SQX_TAG Server Unicast receives notification of the connection request and opens the Vision input for encoding and instantiates the stream.</p>
+
+   <p>Encode parameters (level, profile, bit-rate and key-frame interval) are set by the server application when opening the stream.</p>
+   
+   <p>OEM_SQX_TAG Server Unicast is based on the sources from Sample6A in the RGBEasy SDK (please see below).</p>
+
+   <h3>OEM_SQX_TAG Server Multicast</h3>
+   
+   <p>Run the Multicast server application from the Windows Start Menu (under the OEM_SQX_TAG folder) to obtain a list of available RTSP media session URIs. OEM_SQX_TAG Server Multicast can be used to create input handles for use with OEM_COMPANY OEM_ACTIVESQX or advanced media server applications such as VLC or WOWZA.</p>
+   
+   <img width="984" height="306" alt="Sample6 example output" src="Images/sample6b.jpg">
+
+   <p>The URL is in the form:</p>
+
+   <p><div class="typein">rtsp:\\&lt;ipaddress&gt;:&lt;port&gt;/input&lt;input&gt;?resolution=&lt;width&gtx&lt;height&gt;&amp;rate=&lt;rate&gt;</div></p>
+   <p><ul class="list">
+      <li>&lt;ipaddress&gt; is the IP address of the server computer</li>
+      <li>&lt;port&gt; is the port on which the stream is sent,</li>
+      <li>&lt;input&gt; is the Vision input number,</li>
+      <li>&lt;width&gt; and &lt;height&gt; are the number of horizontal pixels and vertical pixels respectively,</li>
+      <li>&lt;rate&gt; is the frame rate in mHz.</li>
+   </ul></p>
+   <p>The application is a multicast streaming server that supports Vision capture inputs. The application advertises available H.264 compatible Vision inputs as sockets, and displays the required rtsp <!--DMJ socket address-->URL. Note that the Vision input(s) are immediately opened for encoding in this application.</p>
+
+   <p>A client application can connect to the exposed socket using the socket address.</p>
+
+   <p>Encode parameters (level, profile, bit-rate and key-frame interval) are set by the server application when opening the stream.</p>
+
+   <p>OEM_SQX_TAG Server Multicast is based on the sources from Sample6B in the RGBEasy SDK (please see below).</p>
+
+   <h2>Software Development Kit Samples</h2>
+   <p>The OEM_VISION_TAG Driver and Application contains Software Development Kit (SDK) Samples. To have access to these samples, the SDK must be selected for installation when the drivers and application are installed. The two samples below are targeted specifically at the OEM_VISIONRGB_HDSQX encoding functionality. All other RGBEasy samples also work with this card for uncompressed formats.</p>
+
+   <h3>Sample 3D</h3>
+
+   <img width="400" height="366" alt="Sample 3d main dialog box" src="Images/Sample3d.jpg">
+
+   <h3>Capture Control</h3>
+
+   <h4>Input</h4>
+
+   <p>Use the up/down arrows to select the input you wish to capture from.</p>
+
+   <h4>Target Directory</h4>
+
+   <p>Input the directory into which the capture will be saved.</p>
+
+   <p>Once the Input and Target Directory have been selected, click on Start to initiate the capture.</p>
+
+   <p>The sample uses the DGCMEDIASAMPLE structure (see dgcmedia.h) for receiving raw and/or compressed media samples from the Vision device.</p>
+
+   <p>If the Vision input is not capable of providing H.264 compressed video, the application will save an image (in NV12 format) for every frame captured.</p>
+
+   <p>If the Vision input is capable of providing H.264 compressed video, the application will save a <!--DMJ contiguous--> video file consisting of H.264 data. The file will not have a file header, and so may not be playable in most video players.</p>
+
+   <h2>Sample 6A (RTSP Unicast) &amp; Sample 6B (RTSP Multicast)</h2>
+
+   <h3>Building the Sample Applications</h3>
+
+   <p>From the SDK area, the projects will open and build using Visual Studio 10 or above.</p>
+   
+   <p>These samples require the presence of the live555 header files and statically linked libraries. The latest live555 source package can be obtained from <a href="http://www.live555.com/liveMedia/">http://www.live555.com/liveMedia/</a></p>
+
+   <p>Copy the contents of the downloaded live directory into the live directory in this sample application's directory.</p>
+
+   <p>Build the live libraries according to recommended instructions.</p>
+
+   <p>Further instructions can be found in the Readme.txt file included in the RGBEasy SDK directory.</p>
+
+   <p>Note: Ensure that the configuration (debug/release) matches the version of live555 libraries that has been pre-built.</p>
+
+   <hr>
+
+   <h2>Specification</h2>
+
+   <div class="rowhdr"></div>
+   <div class="row">
+      <div class="cat">Board Format</div>
+      <div class="item">PCI Express x8 3/4 length, full height PCIe card</div>
+   </div>
+   <div class="row">
+      <div class="cat">HDMI Capture</div>
+      <div class="item">Supports HDMI 1.3 to 225MHz (including deep colour modes).</div>
+      <div class="item">HDMI audio can be selected as source for audio streaming.</div>
+      <div class="item">Incorporates TMDS equalizer to support up to 20m cables.</div>
+   </div>
+   <div class="row">
+      <div class="cat">DVI Capture</div>
+      <div class="item">Supports DVI 1.0 RGB 24bit capture to 165MHz.</div>
+      <div class="item">Incorporates TMDS equalizer to support up to 20m cables</div>
+   </div>
+   <div class="row">
+      <div class="cat">VGA / YPbPr Capture</div>
+      <div class="item">Triple ADCs sampling up to 170Msps. Full 4:4:4 sampling, 8 bits per colour.</div>
+      <div class="item">5-wire, 4-wire or sync-on-green signal formats.</div>
+   </div>
+   <div class="row">
+      <div class="cat">Composite Video Capture</div>
+      <div class="item">CCIR601 sampling. PAL, NTSC, SECAM formats automatically detected</div>
+   </div>
+   <div class="row">
+      <div class="cat">Audio Capture</div>
+      <div class="item">Stereo Line-In/Stereo balanced inputs with programmable gain (+/-12dB)</div>
+      <div class="item">16 bit sampling at 44.1/48/96kHz.</div>
+      <div class="item">Analogue stereo line-out for direct passthrough of selected input at up to 64kHz sampling, sourced from Analogue input or HDMI channel</div>
+   </div>
+   <div class="row">
+      <div class="cat">Video Capture memory</div>
+      <div class="item">512MB high bandwidth frame buffer supports triple buffering of HD and SD video.</div>
+      <div class="item">Local storage of complex scatter-gather tables for DMA engine (eliminates read overhead)</div>
+   </div>
+   <div class="row">
+      <div class="cat">Video Processing</div>
+      <div class="item">Polyphase FIR scaling engine (7x5) for hardware downscaling and upscaling</div>
+      <div class="item">Colour space conversion allows captured data to be transferred in any format:</div>
+      <div class="subitem">RGB 16 bit (5-5-5, 5-6-5), 24 bit (8-8-8) or 32 bit (8-8-8-alpha)</div>
+      <div class="subitem">YUV 16 bit (4:2:2), NV12 (4:2:0)</div>
+      <div class="subitem">Mono: 8bit</div>
+   </div>
+   <div class="row">
+      <div class="cat">Encoder</div>
+      <div class="item">H.264, MPEG4 (part 10)</div>
+      <div class="subitem">Single channel compression - 60fps</div>
+      <div class="subitem">Dual channel compression - 30fps</div>
+   </div>
+   <div class="row">
+      <div class="cat">DMA Engine</div>
+      <div class="item">Direct DMA to physical or virtual memory buffers with full scatter-gather support.</div>
+      <div class="item">DMA bandwidth: up to 800MB/s 16 independent DMA streams per HD channel including any mix of HD and SD sources, colour space, cropping and scaling parameters</div>
+   </div>
+   <div class="row">
+      <div class="cat">OS Support</div>
+      <div class="item">Windows Vista / 7 / 8 / 8.1 Windows Server 2003 / 2008 / 2012</div>
+   </div>
+   <div class="row">
+      <div class="cat">Power Requirements<sup>*</sup></div>
+      <div class="item">Max current at 12V: 1A</div>
+      <div class="item">Max current at 3.3V: 1A</div>
+      <div class="item">Thermal dissipation: 15W</div>
+   </div>
+   <div class="row">
+      <div class="cat">Storeage Temperature</div>
+      <div class="item">-20 to 70 DegC (-4 to 158 DegF)</div>
+   </div>
+   <div class="row">
+      <div class="cat">Relative Humidity</div>
+      <div class="item">5% to 90% non-condensing</div>
+   </div>
+   <div class="row">
+      <div class="cat">Warranty</div>
+      <div class="item">3 Years</div>
+   </div>
+   <span><sup>*</sup>provisional value</span>
+
+   <p>We are continuously developing the technology used within our product ranges delivering outstanding innovative solutions, therefore the specifications may change from time to time.</p>
+
+</body>
+</html>

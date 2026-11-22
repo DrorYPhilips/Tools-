@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\COMMON\API.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\COMMON\cmdLine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OVERLAY.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{13e2b9f9-bd8c-4959-9554-7668b286225d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{00c8706d-6c65-42bd-be74-bddae5b5bd2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{ce125dd8-679b-4576-9cad-ce64a1bc150a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

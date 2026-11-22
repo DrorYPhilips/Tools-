@@ -1,0 +1,19 @@
+Start testing: Nov 18 08:47 Jerusalem Standard Time
+----------------------------------------------------------
+8/11 Testing: user-guide
+8/11 Test: user-guide
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/multi-recorder-tests.exe" "--user-guide" "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/Multi-Recorder/user-guide/index.html"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"user-guide" start time: Nov 18 08:47 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+User guide and screenshot checks passed.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"user-guide" end time: Nov 18 08:47 Jerusalem Standard Time
+"user-guide" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 18 08:47 Jerusalem Standard Time

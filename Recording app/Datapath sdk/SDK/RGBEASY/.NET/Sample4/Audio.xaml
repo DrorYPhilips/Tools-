@@ -1,0 +1,110 @@
+﻿<Window x:Class="Sample4.AudioProperties"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sample4"
+        mc:Ignorable="d"
+        Title="Audio" Height="294.783" Width="318.043">
+   <Grid>
+      <TabControl>
+         <TabItem Name="FormatTab" Header="Format">
+            <StackPanel>
+               <GroupBox Header="Audio Source">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <RadioButton Name="AudioSourceA" GroupName="AudioSource" Click="AudioSource_Click" IsThreeState="false">Analogue</RadioButton>
+                     <RadioButton Name="AudioSourceD" GroupName="AudioSource" Click="AudioSource_Click" IsThreeState="false">Digital</RadioButton>
+                  </StackPanel>
+               </GroupBox>
+               <GroupBox Header="Sample Format">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <ComboBox Name="SampleFormat" IsReadOnly="True" IsEnabled="False" SelectionChanged="SampleFormat_SelectionChanged">
+                        <ComboBoxItem Content="16 bit, 32 KHz (CD Quality) "/>
+                        <ComboBoxItem Content="16 bit, 44.1 KHz (CD Quality) "/>
+                        <ComboBoxItem Content="16 bit, 48 KHz (DVD Quality) "/>
+                        <ComboBoxItem Content="16 bit, 96 KHz (Studio Quality) "/>
+                     </ComboBox>
+                  </StackPanel>
+               </GroupBox>
+            </StackPanel>
+         </TabItem>
+         <TabItem Name="DigitalTab" Header="Digital">
+            <StackPanel>
+               <GroupBox Header="Output">
+                  <CheckBox Name="DigitalMute" Margin="2, 5, 0, 0" Click="Mute_Click">Mute</CheckBox>
+               </GroupBox>               
+               <GroupBox Header="Channel Pair">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <ComboBox Name="ChannelPair" IsEnabled="True" SelectionChanged="ChannelPair_SelectionChanged">
+                        <ComboBoxItem Content="Channel 0 - 1"/>
+                        <ComboBoxItem Content="Channel 2 - 3"/>
+                        <ComboBoxItem Content="Channel 4 - 5"/>
+                        <ComboBoxItem Content="Channel 6 - 7"/>
+                     </ComboBox>
+                  </StackPanel>
+               </GroupBox>
+
+            </StackPanel>
+         </TabItem>
+         <TabItem Name="AnalogueTab" Header="Analogue">
+            <StackPanel>
+               <GroupBox Header="Unbalanced (RCA) Input">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <CheckBox Name="UnbalancedMute" Click="Mute_Click">Mute</CheckBox>
+                     <DockPanel VerticalAlignment="Stretch" >
+                        <Label DockPanel.Dock="Left" VerticalAlignment="Center" >Gain</Label>
+                        <TextBox Name="UnbalancedDecibels" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                        <Slider Name="UnbalancedGain" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Gain_ValueChanged"/>
+                     </DockPanel>
+                  </StackPanel>
+               </GroupBox>
+               <GroupBox Header="Balanced (XLR) Input">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <CheckBox Name="BalancedMute" Click="Mute_Click">Mute</CheckBox>
+                     <CheckBox Name="BalancedBoost" Click="Boost_Click">Boost +20dB</CheckBox>
+                     <DockPanel VerticalAlignment="Stretch" >
+                        <Label DockPanel.Dock="Left" VerticalAlignment="Center" >Gain</Label>
+                        <TextBox Name="BalancedDecibels" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                        <Slider Name="BalancedGain" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Gain_ValueChanged"/>
+                     </DockPanel>
+                  </StackPanel>
+               </GroupBox>
+            </StackPanel>
+         </TabItem>
+         <TabItem Name="MixerTab" Header="Output Mixer">
+            <StackPanel>
+               <GroupBox Header="Output">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <CheckBox Name="MixerMute" Click="Mute_Click">Mute</CheckBox>
+                     <DockPanel VerticalAlignment="Stretch" >
+                        <Label DockPanel.Dock="Left" VerticalAlignment="Center" >Gain</Label>
+                        <TextBox Name="MixerDecibels" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                        <Slider Name="MixerGain" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Gain_ValueChanged"/>
+                     </DockPanel>
+                  </StackPanel>
+               </GroupBox>
+            </StackPanel>
+         </TabItem>
+         <TabItem Name="LineOutTab"  Header="Line Out">
+            <StackPanel>
+               <GroupBox Header="Source">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <RadioButton Name="LineOutAnalogue" GroupName="LineOutSource" Click="LineOut_Click">Analogue</RadioButton>
+                     <RadioButton Name="LineOutDigital" GroupName="LineOutSource" Click="LineOut_Click">Digital</RadioButton>
+                  </StackPanel>
+               </GroupBox>
+               <GroupBox Header="Output">
+                  <StackPanel Orientation="Vertical" Margin="2, 5, 0, 0">
+                     <CheckBox Name="LineOutMute" Click="Mute_Click">Mute</CheckBox>
+                     <DockPanel VerticalAlignment="Stretch" >
+                        <Label DockPanel.Dock="Left" VerticalAlignment="Center" >Gain</Label>
+                        <TextBox Name="LineOutDecibels" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                        <Slider Name="LineOutGain" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Gain_ValueChanged"/>
+                     </DockPanel>
+                  </StackPanel>
+               </GroupBox>
+            </StackPanel>
+         </TabItem>
+      </TabControl>
+   </Grid>
+</Window>

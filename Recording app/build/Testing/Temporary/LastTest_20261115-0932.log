@@ -1,0 +1,19 @@
+Start testing: Nov 15 14:14 Jerusalem Standard Time
+----------------------------------------------------------
+1/2 Testing: recording-orientation
+1/2 Test: recording-orientation
+Command: "D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build/Release/ndi-recorder-tests.exe"
+Directory: D:/OneDrive - Philips/Documents/PlatformIO/Projects/Recording app/build
+"recording-orientation" start time: Nov 15 14:14 Jerusalem Standard Time
+Output:
+----------------------------------------------------------
+Preview, AVI and MP4 orientation checks passed.
+<end of output>
+Test time =   8.74 sec
+----------------------------------------------------------
+Test Passed.
+"recording-orientation" end time: Nov 15 14:14 Jerusalem Standard Time
+"recording-orientation" time elapsed: 00:00:08
+----------------------------------------------------------
+
+End testing: Nov 15 14:14 Jerusalem Standard Time
