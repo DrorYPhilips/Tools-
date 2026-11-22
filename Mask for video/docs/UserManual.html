@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Mask User Manual</title>
+<meta name="description" content="How to use Video Mask to hide faces, number plates and text in a video.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f4f6f9;
+    --text: #1b1f24;
+    --muted: #59626e;
+    --line: #d9dee5;
+    --accent: #0067c0;
+    --accent-soft: #e7f0fa;
+    --tip-bg: #eaf6ec;
+    --tip-line: #2e7d32;
+    --warn-bg: #fff4e3;
+    --warn-line: #b26a00;
+    --kbd-bg: #f0f2f5;
+    --code-bg: #f1f3f6;
+    --badge: #0067c0;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 8px 24px rgba(0, 0, 0, .07);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15171b;
+      --bg-soft: #1d2026;
+      --text: #e6e9ee;
+      --muted: #a3acb8;
+      --line: #30353d;
+      --accent: #5aa9f0;
+      --accent-soft: #1b2a3a;
+      --tip-bg: #16271a;
+      --tip-line: #5cbf6a;
+      --warn-bg: #2c2213;
+      --warn-line: #e0a040;
+      --kbd-bg: #262a31;
+      --code-bg: #22262d;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15171b;
+    --bg-soft: #1d2026;
+    --text: #e6e9ee;
+    --muted: #a3acb8;
+    --line: #30353d;
+    --accent: #5aa9f0;
+    --accent-soft: #1b2a3a;
+    --tip-bg: #16271a;
+    --tip-line: #5cbf6a;
+    --warn-bg: #2c2213;
+    --warn-line: #e0a040;
+    --kbd-bg: #262a31;
+    --code-bg: #22262d;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  a:hover { text-decoration-thickness: 2px; }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 28px 18px 28px 24px;
+    border-right: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  nav.toc .brand { font-weight: 700; font-size: 17px; margin-bottom: 2px; }
+  nav.toc .ver { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  nav.toc li { counter-increment: toc; }
+  nav.toc a {
+    display: block;
+    padding: 5px 8px;
+    border-radius: 6px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  nav.toc a::before { content: counter(toc) ". "; color: var(--muted); }
+  nav.toc a:hover { background: var(--accent-soft); color: var(--accent); }
+
+  main { padding: 28px 40px 80px; min-width: 0; }
+  .content > * { max-width: 860px; }
+  .content > .wide { max-width: 1220px; }
+  header.top { padding: 8px 0 24px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  header.top h1 { font-size: 36px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
+  header.top p { margin: 0; color: var(--muted); font-size: 18px; }
+
+  h2 {
+    font-size: 26px;
+    line-height: 1.25;
+    margin: 56px 0 12px;
+    padding-top: 8px;
+    scroll-margin-top: 16px;
+  }
+  h3 { font-size: 19px; margin: 30px 0 8px; scroll-margin-top: 16px; }
+  p, ul, ol { margin: 0 0 14px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 18px; }
+
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 18px; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  th { background: var(--bg-soft); font-weight: 600; }
+  .table-wrap { overflow-x: auto; }
+
+  kbd {
+    display: inline-block;
+    min-width: 1.6em;
+    padding: 1px 7px;
+    border: 1px solid var(--line);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    background: var(--kbd-bg);
+    font: 600 13.5px/1.5 "Segoe UI", system-ui, sans-serif;
+    text-align: center;
+    white-space: nowrap;
+  }
+  code {
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--code-bg);
+    font: 14px/1.5 Consolas, "Cascadia Mono", monospace;
+  }
+  pre {
+    margin: 8px 0 18px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: var(--code-bg);
+    overflow-x: auto;
+    font: 14px/1.55 Consolas, "Cascadia Mono", monospace;
+  }
+  .ui { font-weight: 600; }
+
+  .note, .tip, .warn {
+    margin: 16px 0 20px;
+    padding: 12px 16px;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    background: var(--accent-soft);
+  }
+  .tip { border-color: var(--tip-line); background: var(--tip-bg); }
+  .warn { border-color: var(--warn-line); background: var(--warn-bg); }
+  .note > :last-child, .tip > :last-child, .warn > :last-child { margin-bottom: 0; }
+  .note strong:first-child, .tip strong:first-child, .warn strong:first-child { margin-right: 4px; }
+
+  .steps { counter-reset: step; list-style: none; padding: 0; }
+  .steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 2px 0 6px 44px;
+    margin: 0 0 8px;
+  }
+  .steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+  }
+
+  figure { margin: 18px 0 26px; }
+  figure img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    background: #fff;
+  }
+  figcaption { margin-top: 8px; color: var(--muted); font-size: 14.5px; }
+  .wide { max-width: 1220px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .pair figure { margin: 0; }
+  .side { display: grid; grid-template-columns: minmax(0, 370px) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .side figure { margin-top: 4px; }
+
+  .window {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #f3f3f3;
+  }
+  .window .bar {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 0 0 12px;
+    background: #ffffff;
+    color: #1b1b1b;
+    font-size: 12.5px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .window .bar .title { flex: 1; }
+  .window .bar .ctl { width: 46px; text-align: center; color: #555; font-size: 13px; }
+  .window img { border: 0; border-radius: 0; box-shadow: none; width: 100%; }
+
+  .legend { list-style: none; padding: 0; margin: 14px 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+  .legend li { display: flex; gap: 10px; align-items: baseline; margin: 0; }
+  .num {
+    flex: none;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--badge);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    position: relative;
+    top: -1px;
+  }
+  .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+  .faq dt { font-weight: 600; margin-top: 18px; }
+  .faq dd { margin: 4px 0 0; }
+
+  footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 980px) {
+    .layout { display: block; }
+    nav.toc { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 20px 16px; }
+    nav.toc ol { columns: 2; column-gap: 16px; }
+    main { padding: 20px 16px 60px; }
+    .side { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    header.top h1 { font-size: 28px; }
+    h2 { font-size: 22px; margin-top: 44px; }
+    nav.toc ol { columns: 1; }
+    .pair, .legend { grid-template-columns: 1fr; }
+    th, td { padding: 8px; }
+  }
+  @media print {
+    nav.toc { display: none; }
+    .layout { display: block; }
+    main { padding: 0; }
+    body { font-size: 11pt; }
+    h2 { break-after: avoid; margin-top: 28px; }
+    figure, table, .note, .tip, .warn { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="toc" aria-label="Contents">
+  <div class="brand">Video Mask</div>
+  <div class="ver">User manual · version 1.0.0</div>
+  <ol>
+    <li><a href="#about">What it does</a></li>
+    <li><a href="#quick">Quick start</a></li>
+    <li><a href="#start">Start the program</a></li>
+    <li><a href="#window">The main window</a></li>
+    <li><a href="#open">Open a video</a></li>
+    <li><a href="#areas">Add and change areas</a></li>
+    <li><a href="#effects">Effects</a></li>
+    <li><a href="#time">Hide for part of the video</a></li>
+    <li><a href="#preview">Preview and playback</a></li>
+    <li><a href="#export">Export the video</a></li>
+    <li><a href="#quality">Export quality</a></li>
+    <li><a href="#mute">Remove the sound (Mute)</a></li>
+    <li><a href="#masks">Save and reuse areas</a></li>
+    <li><a href="#keys">Keyboard shortcuts</a></li>
+    <li><a href="#faq">Problems and answers</a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="content">
+
+<header class="top">
+  <h1>Video Mask User Manual</h1>
+  <p>Hide faces, number plates and text in a video. Then save a new copy of the video.</p>
+</header>
+
+<!-- ============================================================ -->
+<h2 id="about">1. What Video Mask does</h2>
+<p class="lead">You draw rectangles on the video. Each rectangle hides what is under it, with one of three effects: <strong>Blur</strong>, <strong>Pixelate</strong> or <strong>Black box</strong>. A rectangle can hide its area for the whole video or only for a time range. Then you export a new video file.</p>
+<ul>
+  <li>The original video file is <strong>never changed</strong>. The export always writes a new file.</li>
+  <li>The export keeps the <strong>resolution</strong> (picture size) and the <strong>frame rate</strong> of the original.</li>
+  <li>The sound is kept. You can also remove it with <span class="ui">Mute</span>.</li>
+  <li>The program is portable: nothing to install on Windows 10 and 11, and no internet needed.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="quick">2. Quick start</h2>
+<ol class="steps">
+  <li>Double-click <code>MaskVideo.exe</code>.</li>
+  <li>Drag a video file from Windows Explorer into the window.</li>
+  <li>Drag the mouse on the video to draw a rectangle over the thing you want to hide.</li>
+  <li>Under <span class="ui">Selected area</span>, choose the effect: <span class="ui">Blur</span>, <span class="ui">Pixelate</span> or <span class="ui">Black box</span>.</li>
+  <li>Click <span class="ui">Export video...</span> and save the new file.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2 id="start">3. Start the program</h2>
+<p>All files are in one folder. Keep them together. You can copy the folder to another PC or to a USB stick and run it from there.</p>
+<div class="table-wrap">
+<table>
+  <tr><th>File</th><th>What it is</th></tr>
+  <tr><td><code>MaskVideo.exe</code></td><td>The program. Double-click it to start.</td></tr>
+  <tr><td><code>ffmpeg.exe</code></td><td>Reads and writes the video. It must stay next to <code>MaskVideo.exe</code>.</td></tr>
+  <tr><td><code>User Manual.html</code></td><td>This manual.</td></tr>
+  <tr><td><code>READ ME.txt</code></td><td>Short start help.</td></tr>
+  <tr><td><code>ffmpeg-LICENSE.txt</code></td><td>The license of ffmpeg.</td></tr>
+  <tr><td><code>.NET Framework 4.8 installer\</code></td><td>Microsoft's installer. Only for older Windows (see below).</td></tr>
+</table>
+</div>
+<p><strong>Windows 10 (version 1903 or newer) and Windows 11:</strong> nothing needs to be installed.</p>
+<div class="note">
+  <p><strong>The program does not start?</strong> On Windows 7 SP1, Windows 8.1 or an old Windows 10, .NET Framework 4.8 may be missing. Open the folder <code>.NET Framework 4.8 installer</code> and run <code>ndp48-x86-x64-allos-enu.exe</code> once. It works without internet. Then start <code>MaskVideo.exe</code> again.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="window">4. The main window</h2>
+<figure class="wide">
+  <div class="window">
+    <div class="bar"><span class="title">Video Mask - street.mp4</span><span class="ctl">&#8212;</span><span class="ctl">&#9633;</span><span class="ctl">&#10005;</span></div>
+    <img src="images/main-numbered.png" width="1220" height="780" alt="The Video Mask main window with a street video. Three areas hide a face, a number plate and a phone number. Numbers 1 to 6 mark the parts of the window.">
+  </div>
+  <figcaption>The main window with three areas: a blurred face, a pixelated number plate and a black box over a phone number.</figcaption>
+</figure>
+<ul class="legend">
+  <li><span class="num">1</span><span><strong>Toolbar.</strong> Open, export, save and load areas, preview mode, export quality, Mute and Help.</span></li>
+  <li><span class="num">2</span><span><strong>Video.</strong> The current frame. Draw, move and resize areas here.</span></li>
+  <li><span class="num">3</span><span><strong>Areas to hide.</strong> The list of all areas: number, effect, position and size, and time.</span></li>
+  <li><span class="num">4</span><span><strong>Selected area.</strong> The settings of the area that is selected now.</span></li>
+  <li><span class="num">5</span><span><strong>Play controls and time bar.</strong> Play, step one frame, and move in the video.</span></li>
+  <li><span class="num">6</span><span><strong>Status bar.</strong> File name, size, frame rate, length, codec, bitrate and sound.</span></li>
+</ul>
+
+<h3>The toolbar</h3>
+<figure>
+  <img src="images/toolbar.png" width="690" height="27" alt="The toolbar: Open video, Export video, Load areas, Save areas, Show result, Export quality, Mute and Help.">
+</figure>
+<div class="table-wrap">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="ui">Open video...</td><td>Opens a video file (<kbd>Ctrl</kbd>+<kbd>O</kbd>).</td></tr>
+  <tr><td class="ui">Export video...</td><td>Writes a new video with the areas hidden (<kbd>Ctrl</kbd>+<kbd>E</kbd>). See <a href="#export">Export the video</a>.</td></tr>
+  <tr><td class="ui">Load areas... / Save areas...</td><td>Saves the list of areas to a file and loads it again. See <a href="#masks">Save and reuse areas</a>.</td></tr>
+  <tr><td class="ui">Show result</td><td>On (pressed): the preview shows the real effect. Off: the preview shows colored boxes. See <a href="#preview">Preview and playback</a>.</td></tr>
+  <tr><td class="ui">Export quality</td><td>The video quality of the exported file. The default is <span class="ui">Same as original</span>. See <a href="#quality">Export quality</a>.</td></tr>
+  <tr><td class="ui">Mute</td><td>On (pressed): the exported file has no sound. See <a href="#mute">Remove the sound</a>.</td></tr>
+  <tr><td class="ui">Help</td><td>Opens this manual (<kbd>F1</kbd>). If the file <code>User Manual.html</code> is not next to <code>MaskVideo.exe</code>, it shows a short help text instead.</td></tr>
+</table>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="open">5. Open a video</h2>
+<p>There are four ways to open a video:</p>
+<ul>
+  <li>Click <span class="ui">Open video...</span> or press <kbd>Ctrl</kbd>+<kbd>O</kbd>.</li>
+  <li>Drag the video file from Windows Explorer into the window.</li>
+  <li>Drag the video file onto <code>MaskVideo.exe</code>. The program starts and opens it.</li>
+  <li>Use "Open with" in Windows Explorer and choose <code>MaskVideo.exe</code>.</li>
+</ul>
+<p><strong>Video types:</strong> MP4, MOV, MKV, AVI, WMV, WebM, FLV, MPEG, TS / MTS / M2TS, 3GP, VOB, OGV, MXF, GIF and more. Every type that ffmpeg can read works.</p>
+<p>Phone videos are shown the correct way up, also when the phone was held upright while recording.</p>
+<p>When the video is open, the status bar shows its facts, for example <code>1920x1080, 30 fps, 01:25.400, h264, 16000 kb/s, with audio</code>.</p>
+<div class="note">
+  <p><strong>Open a second video:</strong> if there are areas in the list, the program asks if you want to keep them for the new video. Click <span class="ui">Yes</span> to keep them. Areas that are bigger than the new video are made smaller to fit.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="areas">6. Add and change areas</h2>
+<p>An <strong>area</strong> is a rectangle that hides a part of the video. You can add as many areas as you need.</p>
+<div class="side">
+  <figure>
+    <img src="images/right-panel.png" width="370" height="731" alt="The right panel: the list Areas to hide with three areas, the buttons Duplicate, Delete and Delete all, and the Selected area settings for area 2.">
+    <figcaption>The list of areas, and the settings of the selected area.</figcaption>
+  </figure>
+  <div>
+    <h3 style="margin-top:0">Draw a new area</h3>
+    <p>Drag the mouse on the video, from one corner of the area to the other corner. The mouse pointer is a cross over the video. A simple click does not make an area.</p>
+    <h3>Select an area</h3>
+    <p>Click the area on the video, or click its line in the list. The selected area has white squares on its corners and sides.</p>
+    <h3>Move an area</h3>
+    <p>Drag the inside of the area.</p>
+    <h3>Change the size</h3>
+    <p>Drag one of the white squares.</p>
+    <h3>Type exact numbers</h3>
+    <p>Under <span class="ui">Selected area</span>, type <span class="ui">X (left)</span>, <span class="ui">Y (top)</span>, <span class="ui">Width</span> and <span class="ui">Height</span>. The numbers are pixels of the full-size video.</p>
+  </div>
+</div>
+<h3>Copy and delete</h3>
+<ul>
+  <li><span class="ui">Duplicate</span> (or <kbd>Ctrl</kbd>+<kbd>D</kbd>) makes a copy of the selected area, a little to the right and down.</li>
+  <li><span class="ui">Delete</span> (or <kbd>Delete</kbd>) deletes the selected area.</li>
+  <li><span class="ui">Delete all</span> deletes all areas. The program asks first.</li>
+  <li>Right-click an area on the video for a menu with the same commands.</li>
+</ul>
+<h3>Good to know</h3>
+<ul>
+  <li>The colors on the video show the effect: <span class="swatch" style="background:#00beff"></span>blue = Blur, <span class="swatch" style="background:#ffc800"></span>yellow = Pixelate, <span class="swatch" style="background:#ff5a5a"></span>red = Black box. Each area has a label with its number and effect.</li>
+  <li>A new area gets the effect and strength that you used last.</li>
+  <li>An area always stays inside the video. The smallest size is 8 x 8 pixels. The program makes all numbers even (for example 101 becomes 100), because video formats work best that way.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="effects">7. Effects</h2>
+<p>Select an area, then choose the effect in the <span class="ui">Effect</span> box under <span class="ui">Selected area</span>.</p>
+<div class="table-wrap">
+<table>
+  <tr><th>Effect</th><th>What it does</th><th>Strength</th></tr>
+  <tr><td class="ui">Blur</td><td>Makes the area soft and unclear.</td><td><span class="ui">Blur strength</span>, 1 to 100. A bigger number gives a stronger blur. Default: 20.</td></tr>
+  <tr><td class="ui">Pixelate</td><td>Shows the area as big squares (blocks).</td><td><span class="ui">Pixel size</span>: the size of one block in pixels. A bigger number hides more.</td></tr>
+  <tr><td class="ui">Black box</td><td>Covers the area with solid black.</td><td>No strength.</td></tr>
+</table>
+</div>
+<figure>
+  <img src="images/preview-result.png" width="838" height="471" alt="The video preview with the three effects: the face is blurred, the number plate is pixelated and the phone number is under a black box.">
+  <figcaption>Blur on the face (1), Pixelate on the number plate (2) and a Black box on the phone number (3).</figcaption>
+</figure>
+<div class="tip">
+  <p><strong>Tip:</strong> for faces, number plates and text, <strong>Pixelate</strong> with a large pixel size or a <strong>Black box</strong> hides the content more safely than a light blur.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="time">8. Hide an area for only part of the video</h2>
+<p>A new area hides its part of the picture for the <strong>whole video</strong>. To hide it only for some time, set its start and end:</p>
+<ol class="steps">
+  <li>Move to the first frame where the area must be hidden.</li>
+  <li>Select the area and click <span class="ui">Now</span> next to <span class="ui">Start (sec)</span>.</li>
+  <li>Move to the last frame where the area must be hidden.</li>
+  <li>Click <span class="ui">Now</span> next to <span class="ui">End (sec)</span>.</li>
+</ol>
+<p>You can also right-click the area and choose <span class="ui">Start at current frame</span> or <span class="ui">End at current frame</span>. Or type the time in seconds in <span class="ui">Start (sec)</span> and <span class="ui">End (sec)</span>.</p>
+<ul>
+  <li><span class="ui">Whole video</span> sets the area back to the whole video.</li>
+  <li><span class="ui">Go to start</span> and <span class="ui">Go to end</span> move the video to the start or end time of the area. A double-click on the area in the list also goes to its start.</li>
+  <li>When <span class="ui">End</span> is the length of the video, it means "until the end".</li>
+  <li>The <span class="ui">Time</span> column in the list shows <code>whole video</code> or the time range, for example <code>00:02.000 - 00:06.000</code>.</li>
+  <li>Start and end are exact to the frame.</li>
+</ul>
+<figure>
+  <img src="images/area-off.png" width="838" height="471" alt="The video at 7 seconds. Area 2 on the number plate has a dashed outline and the label 2 Pixelate (off now), and the plate is not hidden.">
+  <figcaption>Outside its time range, an area has a dashed outline and the label "(off now)". Here area 2 ends at 6 seconds, so at 7 seconds the plate is not hidden.</figcaption>
+</figure>
+
+<!-- ============================================================ -->
+<h2 id="preview">9. Preview and playback</h2>
+<h3>Show result</h3>
+<p>The <span class="ui">Show result</span> button in the toolbar sets how the preview looks:</p>
+<div class="pair">
+  <figure>
+    <img src="images/preview-result.png" width="838" height="471" alt="Preview with Show result on: the real blur, pixelate and black box effects.">
+    <figcaption><strong>On</strong> (default): the preview shows the real effect, made in the same way as the export.</figcaption>
+  </figure>
+  <figure>
+    <img src="images/preview-boxes.png" width="838" height="471" alt="Preview with Show result off: the original picture with colored see-through boxes over the areas.">
+    <figcaption><strong>Off</strong>: the original picture with colored boxes. This is faster.</figcaption>
+  </figure>
+</div>
+<p>The preview picture is made smaller than the video (at most 1280 pixels wide) so that it is fast. The export always uses the full size.</p>
+
+<h3>Play and move in the video</h3>
+<figure>
+  <img src="images/play-bar.png" width="850" height="46" alt="The play controls: Play button, previous frame and next frame buttons, the time bar and the time display.">
+</figure>
+<ul>
+  <li><span class="ui">Play</span> / <span class="ui">Pause</span> or <kbd>Space</kbd>. The playback has no sound. With <span class="ui">Show result</span> on, the effects are shown while it plays.</li>
+  <li>The <span class="ui">◀</span> and <span class="ui">▶</span> buttons, or <kbd>←</kbd> and <kbd>→</kbd>, move one frame.</li>
+  <li><kbd>Shift</kbd>+<kbd>←</kbd> and <kbd>Shift</kbd>+<kbd>→</kbd> move one second.</li>
+  <li><kbd>Home</kbd> and <kbd>End</kbd> go to the first and the last frame.</li>
+  <li>Drag the time bar to move to any point.</li>
+  <li>The time shows as minutes:seconds.milliseconds, for example <code>00:03.000 / 00:10.000</code>.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="export">10. Export the video</h2>
+<ol class="steps">
+  <li>Choose the <span class="ui">Export quality</span> in the toolbar (the default <span class="ui">Same as original</span> is good for most videos). Press <span class="ui">Mute</span> if the new file must have no sound.</li>
+  <li>Click <span class="ui">Export video...</span> or press <kbd>Ctrl</kbd>+<kbd>E</kbd>.</li>
+  <li>Choose the folder, the name and the type of the new file. The program suggests the folder of the original, the original name with <code>_masked</code> at the end, and the same type as the original.</li>
+  <li>Click <span class="ui">Save</span>. The export window shows the progress.</li>
+</ol>
+<p>If there are no areas, the program asks if you want to export anyway. It does not ask when <span class="ui">Mute</span> is on, because then the export removes the sound.</p>
+<div class="pair">
+  <figure>
+    <img src="images/export-progress.png" width="480" height="150" alt="The export window during the export: Encoding 46 percent, about 6 seconds left, and a progress bar.">
+    <figcaption>During the export: the percent done and the time left. <span class="ui">Cancel</span> stops the export and deletes the unfinished file.</figcaption>
+  </figure>
+  <figure>
+    <img src="images/export-done.png" width="480" height="150" alt="The export window when it is done: Done in 1 s. Saved: street_masked.mp4, with the buttons Show file and Close.">
+    <figcaption>When it is done: <span class="ui">Show file</span> opens the folder with the new file selected.</figcaption>
+  </figure>
+</div>
+<h3>File types</h3>
+<p>In the save window, choose another type in the <span class="ui">Save as type</span> list: MP4, MKV, MOV, AVI or WebM. You can also type another extension that ffmpeg knows.</p>
+<div class="table-wrap">
+<table>
+  <tr><th>Type</th><th>Video</th><th>Sound</th></tr>
+  <tr><td>MP4, MOV, M4V, MKV, TS, MTS, M2TS</td><td>H.264, or HEVC when the original is HEVC (with <span class="ui">Same as original</span>)</td><td>Copied without change. Re-encoded if the type does not accept it.</td></tr>
+  <tr><td>FLV, 3GP</td><td>H.264</td><td>Copied or re-encoded.</td></tr>
+  <tr><td>WebM</td><td>VP9</td><td>Re-encoded to Opus when needed.</td></tr>
+  <tr><td>AVI, WMV, MPG and others</td><td>The normal codec of the type, high quality</td><td>Copied or re-encoded.</td></tr>
+  <tr><td>GIF</td><td>GIF animation</td><td>No sound (GIF has no sound).</td></tr>
+</table>
+</div>
+<h3>Messages after the export</h3>
+<ul>
+  <li><em>"The sound was re-encoded to fit the file type."</em> The sound could not be copied into this type, so it was converted.</li>
+  <li><em>"The sound could not be written to this file type, so the video has no sound."</em> Choose MP4 or MKV to keep the sound.</li>
+  <li><em>"Sound removed."</em> <span class="ui">Mute</span> was on.</li>
+  <li><em>"The video was copied without change."</em> See <a href="#mute">Remove the sound</a>.</li>
+</ul>
+<div class="note">
+  <p><strong>The original file is safe.</strong> The program does not let you save over the original video. Choose a different name.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="quality">11. Export quality</h2>
+<p>The video must be encoded again, because the pixels in the areas change. The <span class="ui">Export quality</span> box sets how:</p>
+<div class="table-wrap">
+<table>
+  <tr><th>Setting</th><th>What it does</th></tr>
+  <tr><td class="ui">Same as original<br><small>(default)</small></td><td>The same codec as the original (H.264 stays H.264, HEVC stays HEVC), the same bit depth for HEVC (10-bit HDR phone video stays 10-bit, with its HDR color tags) and the same bitrate. The new file has about the same size and quality as the original. For AVI, WMV and other old types it works like <span class="ui">High</span>.</td></tr>
+  <tr><td class="ui">High</td><td>H.264 (VP9 for WebM) at a very high quality. The file can be bigger than the original.</td></tr>
+  <tr><td class="ui">Normal</td><td>H.264 at a good quality. A smaller file.</td></tr>
+  <tr><td class="ui">Small file</td><td>H.264 at a lower quality. The smallest file.</td></tr>
+</table>
+</div>
+<h3>What never changes</h3>
+<p>The export never makes the picture bigger or smaller, and never changes the frame rate. Every frame keeps its time, also in phone videos with a changing frame rate. This was tested with MP4, MOV, MKV, TS and WebM.</p>
+<p>A few exceptions, because of the file types:</p>
+<ul>
+  <li>A video with an odd width or height (for example 641 x 361) loses 1 column or row of pixels in H.264 types. It is cut, not scaled.</li>
+  <li>A phone video that has a "rotate" flag is written already turned the correct way up. It looks the same.</li>
+  <li>GIF stores the time of each frame in steps of 1/100 second, so 30 fps cannot be kept exactly. 25 fps can.</li>
+  <li>AVI keeps all frames and the frame rate, but the video can start one frame late. Use MP4, MKV or MOV when exact timing matters.</li>
+  <li>10-bit H.264 becomes 8-bit. 10-bit HEVC stays 10-bit only with <span class="ui">Same as original</span>.</li>
+</ul>
+<div class="note">
+  <p><strong>Export time:</strong> HEVC videos (most new phones record HEVC) take longer to export with <span class="ui">Same as original</span>, because HEVC is slower to encode than H.264.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="mute">12. Remove the sound (Mute)</h2>
+<p>When <span class="ui">Mute</span> in the toolbar is pressed, the exported file has no sound. Mute changes only the export. The playback in the program never has sound.</p>
+<h3>Only remove the sound from a video</h3>
+<ol class="steps">
+  <li>Open the video. Do not add any areas.</li>
+  <li>Press <span class="ui">Mute</span>.</li>
+  <li>Click <span class="ui">Export video...</span> and save with the same type as the original.</li>
+</ol>
+<p>With no areas, the video is <strong>copied without any change</strong>: it is very fast, and there is no quality loss. If the chosen type cannot hold the original video (for example an H.264 video saved as WebM), the video is encoded instead.</p>
+
+<!-- ============================================================ -->
+<h2 id="masks">13. Save and reuse areas</h2>
+<p>A camera that does not move shows the same things in the same place. You can save the list of areas once and use it again on other clips from the same camera.</p>
+<ul>
+  <li><strong>Save:</strong> click <span class="ui">Save areas...</span> (or press <kbd>Ctrl</kbd>+<kbd>S</kbd>). The areas are saved in a small <code>.masks</code> file. The program suggests the name of the video.</li>
+  <li><strong>Load:</strong> click <span class="ui">Load areas...</span>, or drag a <code>.masks</code> file into the window. If there are already areas in the list, the program asks: <span class="ui">Yes</span> = replace them, <span class="ui">No</span> = add to them.</li>
+  <li>Loaded areas that are bigger than the video are made smaller to fit.</li>
+</ul>
+<p>A <code>.masks</code> file is a plain text file. You can open it in Notepad. Each line is one area: effect, X, Y, width, height, strength, start and end in seconds. <code>end</code> means "until the end of the video".</p>
+<pre># Video Mask areas
+# mode x y width height strength start end
+# times are in seconds; end = 'end' means until the end of the video
+Blur 546 284 68 82 25 0 end
+Pixelate 852 530 166 56 14 2 6
+Black 104 172 232 32 20 0 end</pre>
+
+<!-- ============================================================ -->
+<h2 id="keys">14. Keyboard shortcuts</h2>
+<div class="table-wrap">
+<table>
+  <tr><th>Keys</th><th>What they do</th></tr>
+  <tr><td><kbd>F1</kbd></td><td>Open this manual</td></tr>
+  <tr><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td>Open a video</td></tr>
+  <tr><td><kbd>Ctrl</kbd>+<kbd>E</kbd></td><td>Export the video</td></tr>
+  <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Save the areas</td></tr>
+  <tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>Duplicate the selected area</td></tr>
+  <tr><td><kbd>Space</kbd></td><td>Play / pause</td></tr>
+  <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>One frame back / forward</td></tr>
+  <tr><td><kbd>Shift</kbd>+<kbd>←</kbd> / <kbd>Shift</kbd>+<kbd>→</kbd></td><td>One second back / forward</td></tr>
+  <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>First / last frame</td></tr>
+  <tr><td><kbd>Delete</kbd></td><td>Delete the selected area</td></tr>
+</table>
+</div>
+<p>The keys <kbd>Space</kbd>, the arrows, <kbd>Home</kbd>, <kbd>End</kbd> and <kbd>Delete</kbd> do not work while you type in a number box. Click on the video first.</p>
+
+<!-- ============================================================ -->
+<h2 id="faq">15. Problems and answers</h2>
+<dl class="faq">
+  <dt>The program does not start.</dt>
+  <dd>Install .NET Framework 4.8 with the installer in the folder <code>.NET Framework 4.8 installer</code>. See <a href="#start">Start the program</a>.</dd>
+
+  <dt>The message "ffmpeg.exe was not found" appears.</dt>
+  <dd>Put <code>ffmpeg.exe</code> in the same folder as <code>MaskVideo.exe</code>. The program also finds it in a sub folder <code>ffmpeg\</code> or <code>ffmpeg\bin\</code>.</dd>
+
+  <dt>The message "Could not open this video" appears.</dt>
+  <dd>The file is damaged, it is not a video, or it has no picture (for example a sound file). The message shows the last lines of the error from ffmpeg.</dd>
+
+  <dt>The export failed.</dt>
+  <dd>The message shows the error from ffmpeg. Try MP4 as the file type. Check that the disk has enough free space. The unfinished file is deleted.</dd>
+
+  <dt>The new video has no sound.</dt>
+  <dd><span class="ui">Mute</span> was on, or the chosen file type cannot hold the sound (the message after the export tells you). Export again as MP4 or MKV with Mute off.</dd>
+
+  <dt>Is my original video changed?</dt>
+  <dd>No. The program only reads the original. It does not let you save over it.</dd>
+
+  <dt>The new video is 1 pixel smaller.</dt>
+  <dd>The original has an odd width or height. H.264 needs even numbers, so one column or row is cut. See <a href="#quality">Export quality</a>.</dd>
+
+  <dt>The preview is less sharp than the video.</dt>
+  <dd>The preview is made smaller so that it is fast. The export uses the full size.</dd>
+
+  <dt>Playback starts late in some .ts or .mts files.</dt>
+  <dd>Some of these files have few "key frames". After a jump, ffmpeg must read from the last key frame, which can take a few seconds. The export is not affected.</dd>
+
+  <dt>The export of a phone video is slow.</dt>
+  <dd>Most new phones record HEVC. With <span class="ui">Same as original</span>, HEVC stays HEVC, which is slower to encode. Choose <span class="ui">High</span> for a faster export as H.264 (the file can be bigger).</dd>
+</dl>
+
+<footer>
+  <p>Video Mask 1.0.0. Video reading and writing by <a href="https://ffmpeg.org">FFmpeg</a> (license: GPL, see <code>ffmpeg-LICENSE.txt</code>). Runs on Microsoft .NET Framework 4.8.</p>
+</footer>
+
+</div>
+</main>
+</div>
+</body>
+</html>
