@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="User guide for Frame Check, including choosing a source, selecting an OCR crop, and reading reports.">
+  <title>Frame Check — User Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172635;
+      --muted: #526579;
+      --line: #d9e2ec;
+      --paper: #fff;
+      --wash: #f3f7fa;
+      --blue: #1769aa;
+      --blue-dark: #0e4f86;
+      --teal: #087e83;
+      --amber-bg: #fff4d8;
+      --amber-ink: #72500b;
+      --green-bg: #e7f5ef;
+      --green-ink: #176647;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      line-height: 1.6;
+    }
+    .page { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    header {
+      padding: 58px 0 42px;
+      color: white;
+      background: linear-gradient(125deg, #123f67, #1769aa 65%, #087e83);
+    }
+    header .page { position: relative; }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #bce7f0;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.08; }
+    header p { max-width: 700px; margin: 18px 0 0; color: #e7f2fa; font-size: 1.08rem; }
+    .badge {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 5px 11px;
+      border: 1px solid #8cc9df;
+      border-radius: 999px;
+      color: #eaf8ff;
+      font-size: .82rem;
+    }
+    main { padding: 30px 0 60px; }
+    .layout { display: grid; grid-template-columns: 235px minmax(0, 1fr); gap: 26px; align-items: start; }
+    nav, article, .callout, figure {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      box-shadow: 0 5px 20px #173a5510;
+    }
+    nav { position: sticky; top: 16px; padding: 18px; }
+    nav strong { display: block; margin-bottom: 10px; }
+    nav a {
+      display: block;
+      padding: 6px 0;
+      color: var(--blue-dark);
+      font-size: .92rem;
+      text-decoration: none;
+    }
+    nav a:hover { text-decoration: underline; }
+    article { padding: clamp(20px, 4vw, 40px); }
+    section + section { margin-top: 42px; padding-top: 34px; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 14px; font-size: 1.65rem; line-height: 1.25; }
+    h3 { margin: 25px 0 6px; font-size: 1.12rem; }
+    p { margin: 10px 0; }
+    .lead { color: var(--muted); font-size: 1.05rem; }
+    ol, ul { padding-left: 1.35rem; }
+    li { margin: 7px 0; }
+    strong { color: #183d5b; }
+    figure { margin: 22px 0 28px; overflow: hidden; }
+    figure svg { display: block; width: 100%; height: auto; background: #edf2f6; }
+    figcaption { padding: 12px 16px; color: var(--muted); font-size: .9rem; }
+    .callout { margin: 18px 0; padding: 16px 18px; border-left: 4px solid var(--blue); }
+    .callout.warning { border-left-color: #d49a1f; background: var(--amber-bg); color: var(--amber-ink); }
+    .callout.good { border-left-color: #25926c; background: var(--green-bg); color: var(--green-ink); }
+    .callout p:first-child { margin-top: 0; }
+    .callout p:last-child { margin-bottom: 0; }
+    .steps { counter-reset: step; list-style: none; padding: 0; }
+    .steps li { position: relative; min-height: 40px; margin: 15px 0; padding-left: 48px; }
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: white;
+      background: var(--blue);
+      font-weight: 700;
+      line-height: 32px;
+      text-align: center;
+    }
+    code {
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #164b70;
+      background: #eef4f8;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .91em;
+    }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #f1f6fa; }
+    footer { padding: 24px 0 42px; color: var(--muted); font-size: .9rem; }
+    .small { color: var(--muted); font-size: .9rem; }
+    @media (max-width: 760px) {
+      .layout { grid-template-columns: 1fr; }
+      nav { position: static; }
+      nav a { display: inline-block; margin-right: 14px; }
+      header { padding: 42px 0 34px; }
+    }
+    @media print {
+      body { background: white; }
+      header { padding: 24px 0; print-color-adjust: exact; }
+      .layout { display: block; }
+      nav { display: none; }
+      article, figure, .callout { box-shadow: none; break-inside: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="page">
+      <p class="eyebrow">Frame Check · Desktop app</p>
+      <h1>User Guide</h1>
+      <p>Find missing or duplicated on-screen frame counters in image sequences and videos, or scan an image folder for files that cannot be read.</p>
+      <span class="badge">Windows · Frame Check - Improved OCR</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="layout">
+      <nav aria-label="On this page">
+        <strong>On this page</strong>
+        <a href="#overview">Overview</a>
+        <a href="#prepare">Before you start</a>
+        <a href="#analyze">Analyze counters</a>
+        <a href="#crop">Choose the crop</a>
+        <a href="#results">Read the report</a>
+        <a href="#health">Scan image health</a>
+        <a href="#troubleshoot">Troubleshooting</a>
+      </nav>
+
+      <article>
+        <section id="overview">
+          <h2>Overview</h2>
+          <p class="lead">Frame Check reads the counter printed inside each frame. It does not use a video's container frame number as the counter.</p>
+          <p>Use <strong>Analyze frame numbers</strong> to find gaps and duplicates. For videos, frames are checked in playback order and are numbered from zero in the report. Image folders are read in sorted filename order. Use <strong>Scan image health</strong> for a separate check that verifies image files can be opened.</p>
+          <figure>
+            <svg viewBox="0 0 1000 570" role="img" aria-labelledby="mainTitle mainDesc" xmlns="http://www.w3.org/2000/svg">
+              <title id="mainTitle">Frame Check main window</title>
+              <desc id="mainDesc">Illustrative view of the main window with source selection, crop coordinates, analysis actions, a preview, progress, and report area.</desc>
+              <defs>
+                <linearGradient id="frame" x2="0" y2="1"><stop stop-color="#fafafa"/><stop offset="1" stop-color="#f0f0f0"/></linearGradient>
+              </defs>
+              <rect x="28" y="24" width="944" height="520" rx="8" fill="#fff" stroke="#aab4bf" stroke-width="2"/>
+              <rect x="28" y="24" width="944" height="36" rx="8" fill="url(#frame)"/>
+              <rect x="28" y="52" width="944" height="8" fill="#f3f3f3"/>
+              <circle cx="49" cy="42" r="7" fill="#3c8dce"/>
+              <text x="64" y="47" font-family="Segoe UI,Arial" font-size="16" fill="#263544">Frame Check - Improved OCR</text>
+              <text x="916" y="48" font-family="Arial" font-size="17" fill="#5a6570">—　□　×</text>
+              <rect x="42" y="74" width="696" height="36" rx="4" fill="#fff" stroke="#b8c2cb"/>
+              <text x="53" y="98" font-family="Segoe UI,Arial" font-size="14" fill="#566676">D:\Footage\clip.mp4</text>
+              <rect x="748" y="74" width="105" height="36" rx="4" fill="#f8f8f8" stroke="#b8c2cb"/>
+              <text x="761" y="97" font-family="Segoe UI,Arial" font-size="13" fill="#34485a">Image folder...</text>
+              <rect x="861" y="74" width="97" height="36" rx="4" fill="#f8f8f8" stroke="#b8c2cb"/>
+              <text x="876" y="97" font-family="Segoe UI,Arial" font-size="13" fill="#34485a">Video file...</text>
+              <rect x="42" y="122" width="916" height="135" rx="6" fill="#fff" stroke="#9eabb7"/>
+              <text x="54" y="142" font-family="Segoe UI,Arial" font-size="14" fill="#34485a">OCR crop box (pixels)</text>
+              <g font-family="Segoe UI,Arial" font-size="13" fill="#34485a">
+                <text x="57" y="174">Left (x1):</text><text x="57" y="203">Right (x2):</text>
+                <text x="57" y="232">Top (y1):</text><text x="57" y="251">Bottom (y2):</text>
+              </g>
+              <g fill="#fff" stroke="#adb8c2">
+                <rect x="168" y="155" width="777" height="24" rx="3"/><rect x="168" y="184" width="777" height="24" rx="3"/>
+                <rect x="168" y="213" width="777" height="24" rx="3"/><rect x="168" y="238" width="777" height="15" rx="3"/>
+              </g>
+              <g font-family="Segoe UI,Arial" font-size="13" fill="#263544">
+                <text x="180" y="172">0</text><text x="180" y="201">0</text><text x="180" y="230">0</text><text x="180" y="250">0</text>
+              </g>
+              <g font-family="Segoe UI,Arial" font-size="12">
+                <rect x="42" y="270" width="174" height="32" rx="4" fill="#f7f7f7" stroke="#aeb8c1"/>
+                <text x="52" y="291" fill="#23394c">Select counter area...</text>
+                <rect x="222" y="270" width="142" height="32" rx="4" fill="#f7f7f7" stroke="#aeb8c1"/>
+                <text x="246" y="291" fill="#23394c">Preview crop</text>
+                <rect x="370" y="270" width="183" height="32" rx="4" fill="#eaf3fb" stroke="#6797bc"/>
+                <text x="386" y="291" fill="#164e79">Analyze frame numbers</text>
+                <rect x="559" y="270" width="165" height="32" rx="4" fill="#f7f7f7" stroke="#aeb8c1"/>
+                <text x="574" y="291" fill="#23394c">Scan image health</text>
+                <rect x="735" y="279" width="14" height="14" rx="2" fill="#fff" stroke="#7d8a95"/>
+                <path d="M738 285l4 4 7-9" fill="none" stroke="#2674b7" stroke-width="2"/>
+                <text x="756" y="291" fill="#23394c">Show crop box</text>
+              </g>
+              <rect x="42" y="311" width="916" height="126" rx="4" fill="#fff" stroke="#c7d0d8"/>
+              <rect x="42" y="452" width="916" height="22" rx="3" fill="#f5f5f5" stroke="#d4d4d4"/>
+              <text x="500" y="449" text-anchor="middle" font-family="Segoe UI,Arial" font-size="13" fill="#65717c">Crop preview appears here</text>
+              <text x="42" y="497" font-family="Segoe UI,Arial" font-size="13" fill="#3f4f5c">Select an image folder or video to begin.</text>
+              <rect x="42" y="506" width="916" height="24" rx="3" fill="#fff" stroke="#d1d8de"/>
+            </svg>
+            <figcaption>Main window overview. The file path and values in this guide are examples; the illustrated screen is a vector recreation for clarity.</figcaption>
+          </figure>
+        </section>
+
+        <section id="prepare">
+          <h2>Before you start</h2>
+          <ul>
+            <li>For image sequences, put supported <code>.png</code>, <code>.jpg</code>, <code>.jpeg</code>, or <code>.bmp</code> files in one folder.</li>
+            <li>For video analysis, use an <code>.avi</code>, <code>.mp4</code>, or <code>.mov</code> file. The video codec must be available to the decoder.</li>
+            <li>Make sure the counter is visible and legible in the first image or video frame. Select a crop that includes the counter in the same position in every frame.</li>
+            <li>Tesseract's English OCR data (<code>eng.traineddata</code>) must be available to the installed application.</li>
+          </ul>
+          <div class="callout good">
+            <p><strong>Your source media is not changed.</strong> Frame Check reads the selected images or video and writes a separate text report. Existing reports are preserved; a revision suffix is used when a report name already exists.</p>
+          </div>
+        </section>
+
+        <section id="analyze">
+          <h2>Analyze frame counters</h2>
+          <ol class="steps">
+            <li>Select <strong>Image folder...</strong> or <strong>Video file...</strong> and choose the source.</li>
+            <li>Choose <strong>Select counter area...</strong> and mark the digits on the first frame, or enter the crop coordinates directly.</li>
+            <li>Select <strong>Preview crop</strong> to check that the crop contains the whole counter and little unrelated detail.</li>
+            <li>Select <strong>Analyze frame numbers</strong>. The progress bar and status line show the scan progress.</li>
+            <li>Review the summary and full report in the lower text area, then open the saved report if you need to search or share it.</li>
+          </ol>
+          <p>The coordinates are pixel positions in the source frame: <code>x1</code> is the left edge, <code>x2</code> the right edge, <code>y1</code> the top, and <code>y2</code> the bottom. Keep the right and bottom values greater than the left and top values.</p>
+          <p>Uncheck <strong>Show crop box</strong> to hide the coordinates panel when more space is useful. The crop values are retained.</p>
+        </section>
+
+        <section id="crop">
+          <h2>Select a counter area</h2>
+          <p>In the selection dialog, drag a rectangle around the counter. The rectangle must include all counter digits. Avoid including subtitles, logos, or other changing text that may confuse OCR.</p>
+          <figure>
+            <svg viewBox="0 0 1000 590" role="img" aria-labelledby="cropTitle cropDesc" xmlns="http://www.w3.org/2000/svg">
+              <title id="cropTitle">Select counter area dialog</title>
+              <desc id="cropDesc">Illustration of the crop dialog with a rectangle drawn around an on-screen frame counter.</desc>
+              <rect x="32" y="22" width="936" height="546" rx="9" fill="#fff" stroke="#aab4bf" stroke-width="2"/>
+              <rect x="32" y="22" width="936" height="39" rx="9" fill="#f2f3f4"/>
+              <rect x="32" y="52" width="936" height="9" fill="#f2f3f4"/>
+              <text x="52" y="48" font-family="Segoe UI,Arial" font-size="16" fill="#263544">Select counter area</text>
+              <text x="946" y="49" text-anchor="end" font-family="Arial" font-size="16" fill="#5a6570">×</text>
+              <text x="55" y="88" font-family="Segoe UI,Arial" font-size="14" fill="#34485a">Drag a rectangle around the counter in clip.mp4, frame 1.</text>
+              <rect x="55" y="105" width="890" height="403" rx="3" fill="#293d4a"/>
+              <rect x="55" y="105" width="890" height="403" fill="#355567"/>
+              <path d="M55 371h890v137H55z" fill="#253b46"/>
+              <path d="M95 128h270v155H95zM389 143h245v139H389zM661 128h245v155H661z" fill="#6c8792" opacity=".8"/>
+              <path d="M123 160h210v15H123zm0 32h172v12H123zm0 29h194v12H123zM418 173h181v15H418zm0 32h144v12H418zM689 157h190v15H689zm0 32h165v12H689z" fill="#9db0b4" opacity=".68"/>
+              <path d="M75 366h850M110 336h190m462 0h150" stroke="#91a2a3" stroke-width="7" opacity=".35"/>
+              <rect x="665" y="410" width="231" height="66" rx="7" fill="#071018" opacity=".9"/>
+              <text x="780" y="455" text-anchor="middle" font-family="Consolas,monospace" font-size="36" font-weight="700" fill="#fff">10808</text>
+              <rect x="651" y="397" width="260" height="92" fill="none" stroke="#43d4bd" stroke-width="4" stroke-dasharray="11 6"/>
+              <rect x="764" y="520" width="82" height="30" rx="4" fill="#e8f2fa" stroke="#92a8ba"/>
+              <text x="805" y="540" text-anchor="middle" font-family="Segoe UI,Arial" font-size="14" fill="#193c57">OK</text>
+              <rect x="856" y="520" width="82" height="30" rx="4" fill="#f7f7f7" stroke="#b6c0c8"/>
+              <text x="897" y="540" text-anchor="middle" font-family="Segoe UI,Arial" font-size="14" fill="#354a5c">Cancel</text>
+            </svg>
+            <figcaption>Crop selection screen view. The frame and counter shown are synthetic examples; actual footage will look different.</figcaption>
+          </figure>
+          <p>After confirming, the rectangle is converted to the four coordinate fields and the crop preview is updated. If the video counter moves between frames, choose a crop that covers its full range of movement.</p>
+        </section>
+
+        <section id="results">
+          <h2>Understand the results</h2>
+          <p>The report shows the number of frames processed, OCR-recognized counters, detected duplicates, missing counter values, and any unresolved issues. For a video, a missing value may include an estimated time and the next observed frame to help you navigate the source.</p>
+          <table>
+            <thead><tr><th>Report item</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Total dropped frames</strong></td><td>Number of missing counter values inferred from the sequence, not a count of physical video frames removed.</td></tr>
+              <tr><td><strong>Dropped frame numbers</strong></td><td>Missing counter values, compacted into ranges when possible.</td></tr>
+              <tr><td><strong>Duplicated frames</strong></td><td>Adjacent frames or sorted images that show the same counter value.</td></tr>
+              <tr><td><strong>Unresolved OCR/sequence issues</strong></td><td>Frames without a usable counter or transitions that cannot safely be classified.</td></tr>
+              <tr><td><strong>Incomplete analysis</strong></td><td>One or more unreadable or suspect transitions make the drop/duplicate totals provisional.</td></tr>
+            </tbody>
+          </table>
+          <figure>
+            <svg viewBox="0 0 1000 510" role="img" aria-labelledby="reportTitle reportDesc" xmlns="http://www.w3.org/2000/svg">
+              <title id="reportTitle">Example completed report in Frame Check</title>
+              <desc id="reportDesc">Illustration of the application after analysis, showing a summary and a missing counter range in the report area.</desc>
+              <rect x="34" y="22" width="932" height="466" rx="8" fill="#fff" stroke="#aab4bf" stroke-width="2"/>
+              <rect x="34" y="22" width="932" height="37" rx="8" fill="#f3f3f3"/>
+              <rect x="34" y="51" width="932" height="8" fill="#f3f3f3"/>
+              <text x="57" y="47" font-family="Segoe UI,Arial" font-size="15" fill="#263544">Frame Check - Improved OCR</text>
+              <rect x="51" y="75" width="898" height="31" rx="3" fill="#fff" stroke="#bcc6cf"/>
+              <text x="65" y="96" font-family="Segoe UI,Arial" font-size="13" fill="#566676">D:\Footage\clip.mp4</text>
+              <rect x="51" y="117" width="898" height="89" rx="5" fill="#fff" stroke="#aeb8c2"/>
+              <text x="66" y="141" font-family="Segoe UI,Arial" font-size="13" fill="#425565">OCR crop box (pixels)</text>
+              <g font-family="Segoe UI,Arial" font-size="12" fill="#425565">
+                <text x="70" y="164">Left (x1):  650</text><text x="70" y="185">Right (x2):  911</text>
+                <text x="294" y="164">Top (y1):  397</text><text x="294" y="185">Bottom (y2):  489</text>
+              </g>
+              <g font-family="Segoe UI,Arial" font-size="12">
+                <rect x="51" y="216" width="175" height="29" rx="4" fill="#f7f7f7" stroke="#b1bbc4"/><text x="61" y="235" fill="#34485a">Select counter area...</text>
+                <rect x="232" y="216" width="139" height="29" rx="4" fill="#f7f7f7" stroke="#b1bbc4"/><text x="254" y="235" fill="#34485a">Preview crop</text>
+                <rect x="377" y="216" width="184" height="29" rx="4" fill="#eaf3fb" stroke="#6797bc"/><text x="391" y="235" fill="#164e79">Analyze frame numbers</text>
+                <rect x="567" y="216" width="165" height="29" rx="4" fill="#f7f7f7" stroke="#b1bbc4"/><text x="581" y="235" fill="#34485a">Scan image health</text>
+              </g>
+              <rect x="51" y="257" width="898" height="74" rx="3" fill="#f9fafb" stroke="#c7d0d8"/>
+              <rect x="51" y="338" width="898" height="15" rx="4" fill="#e8f0f5"/>
+              <rect x="51" y="338" width="898" height="15" rx="4" fill="#35a67b"/>
+              <text x="52" y="373" font-family="Segoe UI,Arial" font-size="13" fill="#34485a">Scan complete.</text>
+              <rect x="51" y="383" width="898" height="91" rx="3" fill="#fff" stroke="#c7d0d8"/>
+              <g font-family="Consolas,'Courier New',monospace" font-size="13" fill="#24394a">
+                <text x="66" y="407">Processed 1200 frames; recognized 1200 frame numbers, found 0 duplicate(s)</text>
+                <text x="66" y="425">and 1 missing frame number(s).</text>
+                <text x="66" y="443">Report saved to: D:\Footage\frame_check_results.txt</text>
+                <text x="66" y="461">Dropped frame numbers: [10810]</text>
+              </g>
+            </svg>
+            <figcaption>Example results view. Counts and filenames are illustrative; confirm suspicious gaps against the original media.</figcaption>
+          </figure>
+          <div class="callout warning">
+            <p><strong>OCR is not infallible.</strong> Review unexpected gaps against the original frames. Backwards counters, isolated OCR spikes, and unreadable frames are reported as unresolved instead of being silently corrected.</p>
+          </div>
+          <p>Reports are saved beside the selected video or inside the selected image folder. Frame analysis uses <code>frame_check_results.txt</code> and revision names such as <code>frame_check_results_rev1.txt</code>. Video frame indices in report details are zero-based. Estimated timestamps are approximate when decoder timing is unavailable, especially for variable-frame-rate video.</p>
+        </section>
+
+        <section id="health">
+          <h2>Scan image health</h2>
+          <p>Choose an image folder and select <strong>Scan image health</strong>. This check attempts to load each supported image and reports files that fail to load or decode. It does not read frame counters and does not support video files.</p>
+          <p>The report is saved in the selected folder with a name such as <code>file_tester_report.txt</code>. Existing reports are kept; later scans receive a revision suffix.</p>
+        </section>
+
+        <section id="troubleshoot">
+          <h2>Troubleshooting</h2>
+          <h3>No input or first frame cannot be read</h3>
+          <p>Confirm the selected folder or file still exists. For image folders, check that they contain PNG, JPG, JPEG, or BMP images. For video, confirm the codec can be decoded by the installed version.</p>
+          <h3>Crop preview is wrong or OCR finds unexpected gaps</h3>
+          <p>Reselect the crop around the counter, verify the preview, and make sure the digits are legible in the source. If the counter changes position, enlarge the crop enough to include it throughout the sequence. Check unexpected results against the original frames.</p>
+          <h3>Totals are provisional</h3>
+          <p>Read the unresolved section of the report. Unreadable frames and suspect transitions prevent Frame Check from making a reliable drop or duplicate determination across those transitions.</p>
+          <h3>Report not found where expected</h3>
+          <p>Frame reports are saved in the selected image folder, or beside the selected video. If the base report already exists, look for a filename ending in <code>_rev1</code>, <code>_rev2</code>, and so on.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+  <footer class="page">
+    Frame Check User Guide · For build and dependency instructions, see <code>README.md</code>.
+  </footer>
+</body>
+</html>
